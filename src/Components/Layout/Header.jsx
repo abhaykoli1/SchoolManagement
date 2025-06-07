@@ -1,32 +1,150 @@
-import React from "react";
-import { FaBars, FaUserCircle } from "react-icons/fa";
+import { useState } from "react";
+import {
+  FaBars,
+  FaBell,
+  FaSearch,
+  FaUserCircle,
+  FaCog,
+  FaSignOutAlt,
+  FaCompress,
+} from "react-icons/fa";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { RxCross2 } from "react-icons/rx";
+import { GoScreenFull } from "react-icons/go";
+import { Link } from "react-router-dom";
+import { useFullscreen } from "../../common/useFullscreen";
 
-const Header = ({ isSidebarOpen, toggleSidebar }) => {
+const Header = ({ toggleSidebar, isSidebarOpen }) => {
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [showSearchModal, setShowSearchModal] = useState(false);
+
+  const { isFullScreen, toggleFullScreen } = useFullscreen();
+
   return (
-    <header
-      className={`h-16 bg-white shadow-md fixed top-0 right-0 z-10 flex items-center justify-between transition-all duration-300 ${
-        isSidebarOpen ? "left-64" : "left-16"
-      } `}
-    >
-      <div className="flex items-center gap-4 pl-4">
-        <FaBars
-          className="text-xl text-gray-700 cursor-pointer"
-          onClick={toggleSidebar}
-        />
-        <input
-          type="text"
-          placeholder="Search here"
-          className="border border-gray-300 rounded px-4 py-1 text-sm w-64"
-        />
-      </div>
-      <div className="flex items-center gap-4 pr-4">
-        <div className="text-right text-sm hidden md:block">
-          <div className="font-medium">Name</div>
-          <div className="text-gray-500 text-xs">Administrator</div>
+    <>
+      <header className="flex items-center justify-between px-4 py-2 bg-white shadow sticky top-0 z-30">
+        <div className="flex items-center gap-2">
+          <h1 className="text-[#3D5EE1] font-bold text-lg">
+            {isSidebarOpen ? "" : "EDU"}
+          </h1>
+
+          <button
+            onClick={toggleSidebar}
+            className="bg-[#3D5EE1] text-white p-2 rounded-md"
+          >
+            <FaBars />
+          </button>
+
+          <div className="hidden sm:block relative ml-2">
+            <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
+              <FaSearch />
+            </span>
+            <input
+              type="text"
+              placeholder="Search here"
+              className="pl-9 pr-3 py-1 rounded-md border border-gray-200 bg-neutral-100 text-sm outline-none w-48 sm:w-64"
+            />
+          </div>
+
+          <button
+            onClick={() => setShowSearchModal(true)}
+            className="block sm:hidden ml-2 text-[#3D5EE1] rounded-full bg-neutral-100 cursor-pointer p-1.5"
+          >
+            <FaSearch />
+          </button>
         </div>
-        <FaUserCircle className="text-3xl text-gray-600" />
-      </div>
-    </header>
+
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-4 pe-2">
+            <img
+              src="https://flagcdn.com/us.svg"
+              alt="Language"
+              className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-neutral-100 cursor-pointer"
+            />
+            <FaBell className="w-6 h-6 sm:w-8 sm:h-8 text-gray-600 rounded-full bg-neutral-100 cursor-pointer p-1.5 sm:p-2" />
+
+            {isFullScreen ? (
+              <FaCompress
+                onClick={toggleFullScreen}
+                className="w-6 h-6 sm:w-8 sm:h-8 text-gray-600 rounded-full bg-neutral-100 cursor-pointer p-1.5 sm:p-2"
+              />
+            ) : (
+              <GoScreenFull
+                onClick={toggleFullScreen}
+                className="w-6 h-6 sm:w-8 sm:h-8 text-gray-600 rounded-full bg-neutral-100 cursor-pointer p-1.5 sm:p-2"
+              />
+            )}
+          </div>
+
+          <div className="relative">
+            <div
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={() => setShowProfileMenu((prev) => !prev)}
+            >
+              <img
+                src="https://randomuser.me/api/portraits/men/32.jpg"
+                alt="User"
+                className="w-8 h-8 rounded-full"
+              />
+              <div className="text-sm leading-tight text-right hidden sm:block">
+                <p className="text-gray-800 font-semibold">Ryan Taylor</p>
+                <p className="text-xs text-blue-500">Administrator</p>
+              </div>
+              <MdKeyboardArrowDown className="text-gray-600" />
+            </div>
+
+            {showProfileMenu && (
+              <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 text-sm z-50">
+                <Link
+                  to="#"
+                  onClick={() => setShowProfileMenu(false)}
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                >
+                  <FaUserCircle className="text-blue-500" />
+                  <span>Profile</span>
+                </Link>
+                <Link
+                  to="#"
+                  onClick={() => setShowProfileMenu(false)}
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                >
+                  <FaCog className="text-gray-500" />
+                  <span>Settings</span>
+                </Link>
+                <hr className="my-2 border-gray-200" />
+                <Link
+                  to="#"
+                  onClick={() => setShowProfileMenu(false)}
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 text-red-500"
+                >
+                  <FaSignOutAlt />
+                  <span>Logout</span>
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      </header>
+
+      {showSearchModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex justify-center items-start pt-10">
+          <div className="bg-white w-[90%] max-w-sm rounded-lg relative shadow-lg">
+            <button
+              className="absolute top-3 right-2 text-red-500 text-2xl"
+              onClick={() => setShowSearchModal(false)}
+            >
+              <RxCross2 />
+            </button>
+            <input
+              type="text"
+              placeholder="Search here..."
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
+              autoFocus
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

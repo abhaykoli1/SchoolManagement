@@ -1,75 +1,164 @@
-import { MdDashboard, MdLogout } from "react-icons/md";
-import { FaUser } from "react-icons/fa";
+import { useState } from "react";
+import {
+  MdDashboard,
+  MdAssignment,
+  MdHolidayVillage,
+  MdOutlineLibraryBooks,
+  MdOutlineSettings,
+  MdOutlinePayments,
+  MdEvent,
+  MdSchedule,
+} from "react-icons/md";
+import {
+  FaUser,
+  FaChalkboardTeacher,
+  FaBuilding,
+  FaBook,
+  FaUsers,
+  FaRobot,
+} from "react-icons/fa";
+import { PiExamFill } from "react-icons/pi";
+import { BsFillGrid1X2Fill } from "react-icons/bs";
+import { RiShieldUserFill } from "react-icons/ri";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import { RxCross2 } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
-const Sidebar = ({ isSidebarOpen }) => {
-  return (
-    <div
-      className={`h-screen bg-[#0F2169] text-white flex flex-col fixed top-0 left-0 z-20 transition-all duration-300 ${
-        isSidebarOpen ? "w-64" : "w-16"
-      }`}
-    >
+const Sidebar = ({ toggleSidebar }) => {
+  const [openMenus, setOpenMenus] = useState({});
+
+  const toggleMenu = (menu) => {
+    const updatedMenus = {};
+    Object.keys(openMenus).forEach((key) => {
+      updatedMenus[key] = false;
+    });
+    setOpenMenus({ ...updatedMenus, [menu]: !openMenus[menu] });
+  };
+
+  const handleLinkClick = () => {
+    if (window.innerWidth < 1024) {
+      toggleSidebar(); // Close sidebar on mobile
+    }
+  };
+
+  const navItem = (label, icon, submenu = null, menuKey = "", link = "#") => (
+    <div>
       <div
-        className={`text-2xl font-bold  h-16 flex items-center justify-center bg-white `}
+        onClick={() => {
+          if (submenu) toggleMenu(menuKey);
+        }}
+        className={`group relative flex items-center justify-between overflow-hidden px-4 py-2 text-sm font-medium cursor-pointer rounded ${
+          submenu ? "" : "pr-6"
+        }`}
       >
-        {isSidebarOpen ? (
-          <h1
-            className={`${
-              isSidebarOpen ? "opacity-100" : "opacity-0"
-            } transition-opacity duration-300  text-[#3D5EE1]`}
-          >
-            EDU DASHBOARD
-          </h1>
-        ) : (
-          <h1 className="text-[#3D5EE1]">EDU</h1>
+        <span className="absolute left-0 top-0 h-full w-1 bg-[#3D5EE1] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"></span>
+        <span className="absolute inset-0 z-0 bg-white transform translate-x-full group-hover:translate-x-0 transition duration-300 ease-out origin-right"></span>
+        <div className="flex items-center gap-2 z-10 text-white group-hover:text-[#0F2169] transition duration-300 ease-out">
+          {icon}
+          {!submenu ? (
+            <Link to={link} onClick={handleLinkClick}>
+              <span>{label}</span>
+            </Link>
+          ) : (
+            <span>{label}</span>
+          )}
+        </div>
+
+        {submenu && (
+          <div className="z-10 text-white group-hover:text-[#0F2169] transition duration-300 ease-out">
+            {openMenus[menuKey] ? <IoIosArrowDown /> : <IoIosArrowForward />}
+          </div>
         )}
       </div>
-      <nav className="flex-1 overflow-y-auto">
-        <ul className="p-4 space-y-3 text-sm">
-          <li className="font-semibold uppercase text-gray-400">
-            {isSidebarOpen ? "Main Menu" : ""}
-          </li>
-          <li className="hover:bg-blue-700 p-2 rounded cursor-pointer flex items-center gap-2">
-            <MdDashboard /> {isSidebarOpen && "Dashboard"}
-          </li>
-          <li className="hover:bg-blue-700 p-2 rounded cursor-pointer">
-            {isSidebarOpen && "Admin Dashboard"}
-          </li>
-          <li className="hover:bg-blue-700 p-2 rounded cursor-pointer">
-            {isSidebarOpen && "Teacher Dashboard"}
-          </li>
-          <li className="hover:bg-blue-700 p-2 rounded cursor-pointer">
-            {isSidebarOpen && "Student Dashboard"}
-          </li>
 
-          <li className="font-semibold uppercase text-gray-400 mt-4">
-            {isSidebarOpen && "Management"}
-          </li>
-          {[
-            "Students",
-            "Teachers",
-            "Departments",
-            "Subjects",
-            "Homework & Assignment",
-            "Holiday",
-            "Fees",
-            "Exam & Result list",
-            "Library",
-            "Settings",
-          ].map((text, i) => (
-            <li
-              key={i}
-              className="hover:bg-blue-700 p-2 rounded cursor-pointer"
-            >
-              {isSidebarOpen && text}
+      {submenu && openMenus[menuKey] && (
+        <ul className="ml-6 mt-1 space-y-1 text-sm text-gray-200">
+          {submenu.map((item, idx) => (
+            <li key={idx}>
+              <Link
+                to={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                onClick={handleLinkClick}
+                className="block pl-4 py-1 rounded hover:bg-white hover:text-[#0F2169] transition duration-200"
+              >
+                {item}
+              </Link>
             </li>
           ))}
         </ul>
-      </nav>
-      <div className="p-4 border-t border-blue-700">
-        <button className="flex items-center gap-2 text-sm hover:text-red-400">
-          <MdLogout /> {isSidebarOpen && "Logout"}
-        </button>
+      )}
+    </div>
+  );
+
+  return (
+    <div className="w-64 h-screen bg-[#0F2169] text-white flex flex-col relative">
+      <button
+        className="absolute top-3 right-1 text-red-500 text-3xl lg:hidden cursor-pointer"
+        onClick={toggleSidebar}
+      >
+        <RxCross2 />
+      </button>
+
+      <div className="bg-white text-[#3D5EE1] text-center py-3 font-bold text-xl">
+        EDU DASHBOARD
       </div>
+
+      <nav className="flex-1 overflow-y-auto px-2 py-4 space-y-3 text-sm">
+        <p className="text-gray-400 uppercase px-2">Main Menu</p>
+
+        {navItem(
+          "Dashboard",
+          <MdDashboard />,
+          ["Admin Dashboard", "Teacher Dashboard", "Student Dashboard"],
+          "dashboard"
+        )}
+        {navItem(
+          "Students",
+          <FaUser />,
+          ["Student List", "Add Student", "Student Attendance"],
+          "students"
+        )}
+        {navItem(
+          "Teachers",
+          <FaChalkboardTeacher />,
+          ["Teacher List", "Add Teacher"],
+          "teachers"
+        )}
+        {navItem(
+          "Departments",
+          <FaBuilding />,
+          ["All Departments", "Add Department"],
+          "departments"
+        )}
+        {navItem(
+          "Subjects",
+          <FaBook />,
+          ["All Subjects", "Add Subject"],
+          "subjects"
+        )}
+
+        <p className="text-gray-400 uppercase px-2 pt-3">Management</p>
+
+        {navItem("Accounts", <FaUsers />, ["Invoices", "Payments"], "accounts")}
+        {navItem("Homework & Assignment", <MdAssignment />, null, "", "/homework")}
+        {navItem("Holiday", <MdHolidayVillage />, null, "", "/holiday")}
+        {navItem("Fees", <MdOutlinePayments />, null, "", "/fees")}
+        {navItem("Exam & Result list", <PiExamFill />, null, "", "/exams")}
+        {navItem("Class & Section", <BsFillGrid1X2Fill />, null, "", "/classes")}
+        {navItem("Events", <MdEvent />, null, "", "/events")}
+        {navItem("Time Table", <MdSchedule />, null, "", "/schedule")}
+        {navItem("Library", <MdOutlineLibraryBooks />, null, "", "/library")}
+        {navItem("AI Assistant", <FaRobot />, null, "", "/ai-assistant")}
+        {navItem("Settings", <MdOutlineSettings />, null, "", "/settings")}
+
+        <p className="text-gray-400 uppercase px-2 pt-3">Pages</p>
+
+        {navItem(
+          "Authentication",
+          <RiShieldUserFill />,
+          ["Login", "Register", "Forgot Password"],
+          "auth"
+        )}
+      </nav>
     </div>
   );
 };
