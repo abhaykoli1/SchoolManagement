@@ -120,7 +120,7 @@ const Sidebar = ({ toggleSidebar }) => {
         {navItem(
           "Teachers",
           <FaChalkboardTeacher />,
-          ["Teacher List", "Add Teacher"],
+          ["Teacher List", "Add Expert Teacher"],
           "teachers"
         )}
         {navItem(
@@ -139,11 +139,28 @@ const Sidebar = ({ toggleSidebar }) => {
         <p className="text-gray-400 uppercase px-2 pt-3">Management</p>
 
         {navItem("Accounts", <FaUsers />, ["Invoices", "Payments"], "accounts")}
-        {navItem("Homework & Assignment", <MdAssignment />, null, "", "/homework")}
+        {navItem(
+          "Homework & Assignment",
+          <MdAssignment />,
+          null,
+          "",
+          "/homework"
+        )}
         {navItem("Holiday", <MdHolidayVillage />, null, "", "/holiday")}
         {navItem("Fees", <MdOutlinePayments />, null, "", "/fees")}
-        {navItem("Exam & Result list", <PiExamFill />, null, "", "/exams")}
-        {navItem("Class & Section", <BsFillGrid1X2Fill />, null, "", "/classes")}
+        {navItem(
+          "Exam & Result list",
+          <FaChalkboardTeacher />,
+          ["Exam Result", "Single Result", "Multiple Result"],
+          "Exam & Result list"
+        )}
+        {navItem(
+          "Class & Section",
+          <BsFillGrid1X2Fill />,
+          null,
+          "",
+          "/classes"
+        )}
         {navItem("Events", <MdEvent />, null, "", "/events")}
         {navItem("Time Table", <MdSchedule />, null, "", "/schedule")}
         {navItem("Library", <MdOutlineLibraryBooks />, null, "", "/library")}

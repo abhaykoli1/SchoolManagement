@@ -1,7 +1,7 @@
 export default function StudentFormFilter() {
   return (
     <div className="bg-[#f9f8f5] flex items-center justify-cente">
-      <form className="w-full bg-[#f9f8f5] p-2 rounded-lg">
+      <form className="bg-white p-4 rounded-lg shadow-md w-full">
         <h2 className="text-lg font-semibold mb-6">
           Student Information Panel
         </h2>
@@ -14,7 +14,7 @@ export default function StudentFormFilter() {
             </label>
             <input
               type="text"
-              className="w-full bg-white border border-gray-300 p-1.5 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
@@ -23,7 +23,7 @@ export default function StudentFormFilter() {
             <label className="block text-xs font-semibold text-gray-700 mb-2">
               CLASS
             </label>
-            <select className="w-full bg-white border border-gray-300 p-1.5 rounded-md focus:outline-none ps-3">
+            <select className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3">
               <option>Select Class</option>
               <option>Class 1</option>
               <option>Class 2</option>
@@ -36,7 +36,7 @@ export default function StudentFormFilter() {
             <label className="block text-xs font-semibold text-gray-700 mb-2">
               GENDER
             </label>
-            <select className="w-full bg-white border border-gray-300 p-1.5 rounded-md focus:outline-none ps-3">
+            <select className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3">
               <option>Select Gender</option>
               <option>Male</option>
               <option>Female</option>
@@ -51,7 +51,7 @@ export default function StudentFormFilter() {
             </label>
             <input
               type="email"
-              className="w-full bg-white border border-gray-300 p-1.5 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
@@ -62,7 +62,7 @@ export default function StudentFormFilter() {
             </label>
             <input
               type="tel"
-              className="w-full bg-white border border-gray-300 p-1.5 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
           <div className="flex justify-start mt-6">
