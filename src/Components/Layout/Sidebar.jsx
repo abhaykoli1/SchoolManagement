@@ -17,6 +17,7 @@ import {
   FaUsers,
   FaRobot,
 } from "react-icons/fa";
+
 import { PiExamFill } from "react-icons/pi";
 import { BsFillGrid1X2Fill } from "react-icons/bs";
 import { RiShieldUserFill } from "react-icons/ri";
@@ -26,7 +27,6 @@ import { Link } from "react-router-dom";
 
 const Sidebar = ({ toggleSidebar }) => {
   const [openMenus, setOpenMenus] = useState({});
-
   const toggleMenu = (menu) => {
     const updatedMenus = {};
     Object.keys(openMenus).forEach((key) => {
@@ -89,6 +89,8 @@ const Sidebar = ({ toggleSidebar }) => {
     </div>
   );
 
+  // Niw;
+
   return (
     <div className="w-64 h-screen bg-[#0F2169] text-white flex flex-col relative">
       <button
@@ -120,7 +122,7 @@ const Sidebar = ({ toggleSidebar }) => {
         {navItem(
           "Teachers",
           <FaChalkboardTeacher />,
-          ["Teacher List", "Add Teacher"],
+          ["Teacher List", "Add Expert Teacher"],
           "teachers"
         )}
         {navItem(
@@ -140,6 +142,16 @@ const Sidebar = ({ toggleSidebar }) => {
 
         {navItem("Accounts", <FaUsers />, ["Invoices", "Payments"], "accounts")}
         {navItem(
+          // <<<<<<< HEAD
+          // =======
+          "Attendance Management",
+          <MdAssignment />,
+          null,
+          "",
+          "/attendance-management"
+        )}
+        {navItem(
+          // >>>>>>> 9af023402b251582fb0c330cf6955be9c02c3490
           "Homework & Assignment",
           <MdAssignment />,
           null,
@@ -148,7 +160,16 @@ const Sidebar = ({ toggleSidebar }) => {
         )}
         {navItem("Holiday", <MdHolidayVillage />, null, "", "/holiday")}
         {navItem("Fees", <MdOutlinePayments />, null, "", "/fees")}
+        {/* <<<<<<< HEAD */}
         {navItem("Exam & Result list", <PiExamFill />, null, "", "/exams")}
+        {/* // ======= */}
+        {navItem(
+          "Exam & Result list",
+          <FaChalkboardTeacher />,
+          ["Exam Result", "Single Result", "Multiple Result"],
+          "Exam & Result list"
+        )}
+        {/* >>>>>>> 9af023402b251582fb0c330cf6955be9c02c3490 */}
         {navItem(
           "Class & Section",
           <BsFillGrid1X2Fill />,

@@ -8,6 +8,7 @@ import {
   FaSignOutAlt,
   FaCompress,
 } from "react-icons/fa";
+import { FcUnlock } from "react-icons/fc";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import { GoScreenFull } from "react-icons/go";
@@ -102,6 +103,14 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
                 >
                   <FaUserCircle className="text-blue-500" />
                   <span>Profile</span>
+                </Link>
+                                <Link
+                  to="forgot-password"
+                  onClick={() => setShowProfileMenu(false)}
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                >
+                  <FcUnlock className="text-blue-500" />
+                  <span>Forgot Password</span>
                 </Link>
                 <Link
                   to="#"
