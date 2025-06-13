@@ -15,7 +15,6 @@ import Subject from "./Pages/Subject/Subject";
 import Event from "./Pages/Event/Event";
 import AttendanceManagement from "./Pages/Attendance/AttendanceManagement";
 
-// New APP
 function App() {
   return (
     <Routes>
