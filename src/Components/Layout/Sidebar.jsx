@@ -37,57 +37,60 @@ const Sidebar = ({ toggleSidebar }) => {
 
   const handleLinkClick = () => {
     if (window.innerWidth < 1024) {
-      toggleSidebar(); // Close sidebar on mobile
+      toggleSidebar();
     }
   };
 
-  const navItem = (label, icon, submenu = null, menuKey = "", link = "#") => (
-    <div>
-      <div
-        onClick={() => {
-          if (submenu) toggleMenu(menuKey);
-        }}
-        className={`group relative flex items-center justify-between overflow-hidden px-4 py-2 text-sm font-medium cursor-pointer rounded ${
-          submenu ? "" : "pr-6"
-        }`}
-      >
-        <span className="absolute left-0 top-0 h-full w-1 bg-[#3D5EE1] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"></span>
-        <span className="absolute inset-0 z-0 bg-white transform translate-x-full group-hover:translate-x-0 transition duration-300 ease-out origin-right"></span>
-        <div className="flex items-center gap-2 z-10 text-white group-hover:text-[#0F2169] transition duration-300 ease-out">
-          {icon}
-          {!submenu ? (
-            <Link to={link} onClick={handleLinkClick}>
-              <span>{label}</span>
-            </Link>
-          ) : (
+  const navItem = (label, icon, submenu = null, menuKey = "", link = "#") => {
+    if (!submenu) {
+      return (
+        <Link
+          to={link}
+          onClick={handleLinkClick}
+          className="group relative flex items-center justify-between overflow-hidden px-4 py-2 text-sm font-medium rounded cursor-pointer transition duration-300 hover:bg-white hover:text-[#0F2169]"
+        >
+          <span className="absolute left-0 top-0 h-full w-1 bg-[#3D5EE1] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"></span>
+          <div className="flex items-center gap-2 z-10">
+            {icon}
             <span>{label}</span>
+          </div>
+        </Link>
+      );
+    } else {
+      return (
+        <div>
+          <div
+            onClick={() => toggleMenu(menuKey)}
+            className="group relative flex items-center justify-between overflow-hidden px-4 py-2 text-sm font-medium cursor-pointer rounded hover:bg-white hover:text-[#0F2169] transition duration-300"
+          >
+            <span className="absolute left-0 top-0 h-full w-1 bg-[#3D5EE1] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"></span>
+            <div className="flex items-center gap-2 z-10">
+              {icon}
+              <span>{label}</span>
+            </div>
+            <div className="z-10">
+              {openMenus[menuKey] ? <IoIosArrowDown /> : <IoIosArrowForward />}
+            </div>
+          </div>
+          {openMenus[menuKey] && (
+            <ul className="ml-6 mt-1 space-y-1 text-sm text-gray-200">
+              {submenu.map((item, idx) => (
+                <li key={idx}>
+                  <Link
+                    to={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                    onClick={handleLinkClick}
+                    className="block pl-4 py-1 rounded hover:bg-white hover:text-[#0F2169] transition duration-200"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
-
-        {submenu && (
-          <div className="z-10 text-white group-hover:text-[#0F2169] transition duration-300 ease-out">
-            {openMenus[menuKey] ? <IoIosArrowDown /> : <IoIosArrowForward />}
-          </div>
-        )}
-      </div>
-
-      {submenu && openMenus[menuKey] && (
-        <ul className="ml-6 mt-1 space-y-1 text-sm text-gray-200">
-          {submenu.map((item, idx) => (
-            <li key={idx}>
-              <Link
-                to={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
-                onClick={handleLinkClick}
-                className="block pl-4 py-1 rounded hover:bg-white hover:text-[#0F2169] transition duration-200"
-              >
-                {item}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+      );
+    }
+  };
 
   return (
     <div className="w-64 h-screen bg-[#0F2169] text-white flex flex-col relative">
@@ -140,6 +143,13 @@ const Sidebar = ({ toggleSidebar }) => {
 
         {navItem("Accounts", <FaUsers />, ["Invoices", "Payments"], "accounts")}
         {navItem(
+          "Attendance Management",
+          <MdAssignment />,
+          null,
+          "",
+          "/attendance-management"
+        )}
+        {navItem(
           "Homework & Assignment",
           <MdAssignment />,
           null,
@@ -152,7 +162,7 @@ const Sidebar = ({ toggleSidebar }) => {
           "Exam & Result list",
           <FaChalkboardTeacher />,
           ["Exam Result", "Single Result", "Multiple Result"],
-          "Exam & Result list"
+          "exam-results"
         )}
         {navItem(
           "Class & Section",
@@ -168,14 +178,8 @@ const Sidebar = ({ toggleSidebar }) => {
         {navItem("AI Assistant", <FaRobot />, null, "", "/ai-assistant")}
         {navItem("Settings", <MdOutlineSettings />, null, "", "/settings")}
 
-        <p className="text-gray-400 uppercase px-2 pt-3">Pages</p>
-
-        {navItem(
-          "Authentication",
-          <RiShieldUserFill />,
-          ["Login", "Register", "Forgot Password"],
-          "auth"
-        )}
+        {/* <p className="text-gray-400 uppercase px-2 pt-3">Pages</p> */}
+        {/* Add more pages here if needed */}
       </nav>
     </div>
   );

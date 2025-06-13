@@ -7,7 +7,9 @@ import {
   FaCog,
   FaSignOutAlt,
   FaCompress,
+  FaUserClock
 } from "react-icons/fa";
+import { IoLogIn } from "react-icons/io5";
 import { FcUnlock } from "react-icons/fc";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
@@ -104,7 +106,23 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
                   <FaUserCircle className="text-blue-500" />
                   <span>Profile</span>
                 </Link>
-                                <Link
+                <Link
+                  to="login"
+                  onClick={() => setShowProfileMenu(false)}
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                >
+                  <IoLogIn className="text-blue-500" />
+                  <span>Login</span>
+                </Link>
+                <Link
+                  to="register"
+                  onClick={() => setShowProfileMenu(false)}
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                >
+                  <FaUserClock className="text-blue-500" />
+                  <span>Register</span>
+                </Link>
+                <Link
                   to="forgot-password"
                   onClick={() => setShowProfileMenu(false)}
                   className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
@@ -113,7 +131,7 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
                   <span>Forgot Password</span>
                 </Link>
                 <Link
-                  to="#"
+                  to="settings"
                   onClick={() => setShowProfileMenu(false)}
                   className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
                 >
