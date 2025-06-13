@@ -38,7 +38,7 @@ function App() {
     <Route path="home-assignment" element={<Assignment />} /> 
     <Route path="bock-library" element={<Library />} /> 
     <Route path="transport-management" element={<Transportmanagement />} /> 
-    <Route path="fees" element={<Feesmanagement />} /> 
+    <Route path="fees" element={<Feesmanagement />} /> ``
       </Route>
     </Routes>
   );
