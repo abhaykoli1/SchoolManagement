@@ -144,7 +144,7 @@ const Sidebar = ({ toggleSidebar }) => {
           <MdAssignment />,
           null,
           "",
-          "/homework"
+          "/home-assignment"
         )}
         {navItem("Holiday", <MdHolidayVillage />, null, "", "/holiday")}
         {navItem("Fees", <MdOutlinePayments />, null, "", "/fees")}
@@ -163,7 +163,8 @@ const Sidebar = ({ toggleSidebar }) => {
         )}
         {navItem("Events", <MdEvent />, null, "", "/events")}
         {navItem("Time Table", <MdSchedule />, null, "", "/schedule")}
-        {navItem("Library", <MdOutlineLibraryBooks />, null, "", "/library")}
+        {navItem("Library", <MdOutlineLibraryBooks />, null, "", "/bock-library")}
+        {navItem("Transport Management", <MdOutlineLibraryBooks />, null, "", "/transport-management")}
         {navItem("AI Assistant", <FaRobot />, null, "", "/ai-assistant")}
         {navItem("Settings", <MdOutlineSettings />, null, "", "/settings")}
 
