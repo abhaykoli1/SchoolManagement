@@ -13,6 +13,7 @@ import MultipleResultList from "./Pages/Exam/Add-Result/MultipleResultList";
 import ClassSection from "./Pages/Class-Section/ClassSection";
 import Subject from "./Pages/Subject/Subject";
 import Event from "./Pages/Event/Event";
+import AttendanceManagement from "./Pages/Attendance/AttendanceManagement";
 
 function App() {
   return (
@@ -30,7 +31,11 @@ function App() {
         <Route path="multiple-result" element={<MultipleResultList />} />
         <Route path="classes" element={<ClassSection />} />
         <Route path="add-subject" element={<Subject />} />
-                <Route path="events" element={<Event />} />
+        <Route path="events" element={<Event />} />
+        <Route
+          path="attendance-management"
+          element={<AttendanceManagement />}
+        />
       </Route>
     </Routes>
   );

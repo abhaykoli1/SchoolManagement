@@ -140,6 +140,13 @@ const Sidebar = ({ toggleSidebar }) => {
 
         {navItem("Accounts", <FaUsers />, ["Invoices", "Payments"], "accounts")}
         {navItem(
+          "Attendance Management",
+          <MdAssignment />,
+          null,
+          "",
+          "/attendance-management"
+        )}
+        {navItem(
           "Homework & Assignment",
           <MdAssignment />,
           null,
