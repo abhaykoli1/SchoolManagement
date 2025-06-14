@@ -17,6 +17,7 @@ import Assignment from "./Pages/Assignment/Assignment";
 import Library from "./Pages/Library/Blibrary";
 import Transportmanagement from "./Pages/Transportmanagement/Transportmanagement";
 import Feesmanagement from "./Pages/Feesmanagement/Feesmanagement";
+import Hostelmanagement from "./Pages/Hostelmanagement/Hostelmanagement";
 
 function App() {
   return (
@@ -38,7 +39,8 @@ function App() {
     <Route path="home-assignment" element={<Assignment />} /> 
     <Route path="bock-library" element={<Library />} /> 
     <Route path="transport-management" element={<Transportmanagement />} /> 
-    <Route path="fees" element={<Feesmanagement />} /> ``
+    <Route path="fees" element={<Feesmanagement />} /> 
+    <Route path="hostel-management" element={<Hostelmanagement />} /> 
       </Route>
     </Routes>
   );

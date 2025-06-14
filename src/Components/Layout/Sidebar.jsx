@@ -184,6 +184,7 @@ const Sidebar = ({ toggleSidebar }) => {
         {navItem("Time Table", <MdSchedule />, null, "", "/schedule")}
         {navItem("Library", <MdOutlineLibraryBooks />, null, "", "/bock-library")}
         {navItem("Transport Management", <MdOutlineLibraryBooks />, null, "", "/transport-management")}
+        {navItem("Hostel Management", <MdOutlineLibraryBooks />, null, "", "/hostel-management")}
         {navItem("AI Assistant", <FaRobot />, null, "", "/ai-assistant")}
         {navItem("Settings", <MdOutlineSettings />, null, "", "/settings")}
 
