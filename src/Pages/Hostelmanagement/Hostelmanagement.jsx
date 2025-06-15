@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { BsThreeDots } from "react-icons/bs";
-import AddAssignment from "./AddHostelmanagement";
 import AddHostelmanagement from "./AddHostelmanagement";
 
 export default function Hostelmanagement() {
@@ -9,7 +7,6 @@ export default function Hostelmanagement() {
     <>
       <AddHostelmanagement />
       <Hostelmanagementlist />
-    
     </>
   );
 }

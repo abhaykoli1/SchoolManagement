@@ -18,6 +18,9 @@ import Library from "./Pages/Library/Blibrary";
 import Transportmanagement from "./Pages/Transportmanagement/Transportmanagement";
 import Feesmanagement from "./Pages/Feesmanagement/Feesmanagement";
 import Hostelmanagement from "./Pages/Hostelmanagement/Hostelmanagement";
+import Inventorymanagement from "./Pages/Inventorymanagement/Inventorymanagement";
+import Parentportal from "./Pages/Parentportal/Parentportal";
+import Onlineadmission from "./Pages/Onlineadmission/Onlineadmission";
 
 function App() {
   return (
@@ -41,6 +44,9 @@ function App() {
     <Route path="transport-management" element={<Transportmanagement />} /> 
     <Route path="fees" element={<Feesmanagement />} /> 
     <Route path="hostel-management" element={<Hostelmanagement />} /> 
+    <Route path="inventory-management" element={<Inventorymanagement />} /> 
+    <Route path="Parent-portal" element={<Parentportal />} /> 
+    <Route path="Online-Admission" element={<Onlineadmission />} /> 
       </Route>
     </Routes>
   );

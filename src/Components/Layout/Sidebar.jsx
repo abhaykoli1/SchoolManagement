@@ -185,6 +185,9 @@ const Sidebar = ({ toggleSidebar }) => {
         {navItem("Library", <MdOutlineLibraryBooks />, null, "", "/bock-library")}
         {navItem("Transport Management", <MdOutlineLibraryBooks />, null, "", "/transport-management")}
         {navItem("Hostel Management", <MdOutlineLibraryBooks />, null, "", "/hostel-management")}
+        {navItem("Inventory Managementlist", <MdOutlineLibraryBooks />, null, "", "/inventory-management")}
+        {navItem("Parent Portal", <MdOutlineLibraryBooks />, null, "", "/Parent-portal")}
+        {navItem("Online Admission", <MdOutlineLibraryBooks />, null, "", "/Online-Admission")}
         {navItem("AI Assistant", <FaRobot />, null, "", "/ai-assistant")}
         {navItem("Settings", <MdOutlineSettings />, null, "", "/settings")}
 
