@@ -74,10 +74,12 @@ textarea {
 
 .custom-thead-row th {
   text-align: left;
-  font-size: 13px;
+  font-size: 13.5px;
   color: #4b5563;
+  text-transform: uppercase !important;
   padding: 10px 12px;
   white-space: nowrap;
+  font-weight: 500;
 }
 
 .custom-tbody-row {

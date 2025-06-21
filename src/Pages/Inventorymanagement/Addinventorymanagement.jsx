@@ -42,9 +42,7 @@ export default function Addinventorymanagement() {
     <div className="bg-white p-4 rounded-lg shadow-md w-full">
       {/* Add Hostel management */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-4">
-        {/* <h2 className="text-[18px] font-medium uppercase"></h2> */}
-        <h2 className="text-[17px] font-semibold uppercase">
-          {" "}
+        <h2 className="text-[17px] font-semibold uppercase mb-2">
           Inventory Management
         </h2>
       </div>

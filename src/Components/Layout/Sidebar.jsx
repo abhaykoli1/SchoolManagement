@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   MdDashboard,
   MdAssignment,
@@ -17,15 +18,13 @@ import {
   FaUsers,
   FaRobot,
 } from "react-icons/fa";
-
 import { PiExamFill } from "react-icons/pi";
 import { BsFillGrid1X2Fill } from "react-icons/bs";
-import { RiShieldUserFill } from "react-icons/ri";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ toggleSidebar }) => {
+const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
   const [openMenus, setOpenMenus] = useState({});
   const toggleMenu = (menu) => {
     const updatedMenus = {};
@@ -92,109 +91,149 @@ const Sidebar = ({ toggleSidebar }) => {
     }
   };
 
-  // Niw;
-
   return (
-    <div className="w-64 h-screen bg-[#0F2169] text-white flex flex-col relative">
-      <button
-        className="absolute top-3 right-1 text-red-500 text-3xl lg:hidden cursor-pointer"
-        onClick={toggleSidebar}
-      >
-        <RxCross2 />
-      </button>
+    <AnimatePresence>
+      {isSidebarOpen && (
+        <motion.div
+          initial={{ x: "-100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "-100%" }}
+          transition={{ duration: 0.35 }}
+          className="w-64 h-screen bg-[#0F2169] text-white flex flex-col fixed z-50 top-0 left-0 lg:relative"
+        >
+          <button
+            className="absolute top-3 right-1 text-red-500 text-3xl lg:hidden cursor-pointer"
+            onClick={toggleSidebar}
+          >
+            <RxCross2 />
+          </button>
 
-      <div className="bg-white text-[#3D5EE1] text-center py-3 font-bold text-xl">
-        EDU DASHBOARD
-      </div>
+          <div className="bg-white text-[#3D5EE1] text-center  h-[50px] flex items-center justify-center shado font-bold text-xl">
+            EDU DASHBOARD
+          </div>
 
-      <nav className="flex-1 overflow-y-auto px-2 py-4 space-y-3 text-sm">
-        <p className="text-gray-400 uppercase px-2">Main Menu</p>
+          <nav className="flex-1 overflow-y-auto px-2 py-4 space-y-3 text-sm">
+            <p className="text-gray-400 uppercase px-2">Main Menu</p>
 
-        {navItem(
-          "Dashboard",
-          <MdDashboard />,
-          ["Admin Dashboard", "Teacher Dashboard", "Student Dashboard"],
-          "dashboard"
-        )}
-        {navItem(
-          "Students",
-          <FaUser />,
-          ["Student List", "Add Student", "Student Attendance"],
-          "students"
-        )}
-        {navItem(
-          "Teachers",
-          <FaChalkboardTeacher />,
-          ["Teacher List", "Add Expert Teacher"],
-          "teachers"
-        )}
-        {navItem(
-          "Departments",
-          <FaBuilding />,
-          ["All Departments", "Add Department"],
-          "departments"
-        )}
-        {navItem(
-          "Subjects",
-          <FaBook />,
-          ["All Subjects", "Add Subject"],
-          "subjects"
-        )}
+            {navItem(
+              "Dashboard",
+              <MdDashboard />,
+              ["Admin Dashboard", "Teacher Dashboard", "Student Dashboard"],
+              "dashboard"
+            )}
+            {navItem(
+              "Students",
+              <FaUser />,
+              ["Student List", "Add Student", "Student Attendance"],
+              "students"
+            )}
+            {navItem(
+              "Teachers",
+              <FaChalkboardTeacher />,
+              ["Teacher List", "Add Expert Teacher"],
+              "teachers"
+            )}
+            {navItem(
+              "Departments",
+              <FaBuilding />,
+              ["All Departments", "Add Department"],
+              "departments"
+            )}
+            {navItem(
+              "Subjects",
+              <FaBook />,
+              ["All Subjects", "Add Subject"],
+              "subjects"
+            )}
 
-        <p className="text-gray-400 uppercase px-2 pt-3">Management</p>
+            <p className="text-gray-400 uppercase px-2 pt-3">Management</p>
 
-        {navItem("Accounts", <FaUsers />, ["Invoices", "Payments"], "accounts")}
-        {navItem(
-          // <<<<<<< HEAD
-          // =======
-          "Attendance Management",
-          <MdAssignment />,
-          null,
-          "",
-          "/attendance-management"
-        )}
-        {navItem(
-          // >>>>>>> 9af023402b251582fb0c330cf6955be9c02c3490
-          "Homework & Assignment",
-          <MdAssignment />,
-          null,
-          "",
-          "/home-assignment"
-        )}
-        {navItem("Holiday", <MdHolidayVillage />, null, "", "/holiday")}
-        {navItem("Fees", <MdOutlinePayments />, null, "", "/fees")}
-        {/* <<<<<<< HEAD */}
-        {navItem("Exam & Result list", <PiExamFill />, null, "", "/exams")}
-        {/* // ======= */}
-        {navItem(
-          "Exam & Result list",
-          <FaChalkboardTeacher />,
-          ["Exam Result", "Single Result", "Multiple Result"],
-          "exam-results"
-        )}
-        {/* >>>>>>> 9af023402b251582fb0c330cf6955be9c02c3490 */}
-        {navItem(
-          "Class & Section",
-          <BsFillGrid1X2Fill />,
-          null,
-          "",
-          "/classes"
-        )}
-        {navItem("Events", <MdEvent />, null, "", "/events")}
-        {navItem("Time Table", <MdSchedule />, null, "", "/schedule")}
-        {navItem("Library", <MdOutlineLibraryBooks />, null, "", "/bock-library")}
-        {navItem("Transport Management", <MdOutlineLibraryBooks />, null, "", "/transport-management")}
-        {navItem("Hostel Management", <MdOutlineLibraryBooks />, null, "", "/hostel-management")}
-        {navItem("Inventory Managementlist", <MdOutlineLibraryBooks />, null, "", "/inventory-management")}
-        {navItem("Parent Portal", <MdOutlineLibraryBooks />, null, "", "/Parent-portal")}
-        {navItem("Online Admission", <MdOutlineLibraryBooks />, null, "", "/Online-Admission")}
-        {navItem("AI Assistant", <FaRobot />, null, "", "/ai-assistant")}
-        {navItem("Settings", <MdOutlineSettings />, null, "", "/settings")}
-
-        {/* <p className="text-gray-400 uppercase px-2 pt-3">Pages</p> */}
-        {/* Add more pages here if needed */}
-      </nav>
-    </div>
+            {navItem(
+              "Accounts",
+              <FaUsers />,
+              ["Invoices", "Payments"],
+              "accounts"
+            )}
+            {navItem(
+              "Attendance Management",
+              <MdAssignment />,
+              null,
+              "",
+              "/attendance-management"
+            )}
+            {navItem(
+              "Homework & Assignment",
+              <MdAssignment />,
+              null,
+              "",
+              "/home-assignment"
+            )}
+            {navItem("Holiday", <MdHolidayVillage />, null, "", "/holiday")}
+            {navItem("Fees", <MdOutlinePayments />, null, "", "/fees")}
+            {navItem("Exam & Result list", <PiExamFill />, null, "", "/exams")}
+            {navItem(
+              "Exam & Result list",
+              <FaChalkboardTeacher />,
+              ["Exam Result", "Single Result", "Multiple Result"],
+              "exam-results"
+            )}
+            {navItem(
+              "Class & Section",
+              <BsFillGrid1X2Fill />,
+              null,
+              "",
+              "/classes"
+            )}
+            {navItem("Events", <MdEvent />, null, "", "/events")}
+            {navItem("Time Table", <MdSchedule />, null, "", "/schedule")}
+            {navItem(
+              "Library",
+              <MdOutlineLibraryBooks />,
+              null,
+              "",
+              "/bock-library"
+            )}
+            {navItem(
+              "Transport Management",
+              <MdOutlineLibraryBooks />,
+              null,
+              "",
+              "/transport-management"
+            )}
+            {navItem(
+              "Hostel Management",
+              <MdOutlineLibraryBooks />,
+              null,
+              "",
+              "/hostel-management"
+            )}
+            {navItem(
+              "Inventory Managementlist",
+              <MdOutlineLibraryBooks />,
+              null,
+              "",
+              "/inventory-management"
+            )}
+            {navItem(
+              "Parent Portal",
+              <MdOutlineLibraryBooks />,
+              null,
+              "",
+              "/Parent-portal"
+            )}
+            {navItem(
+              "Online Admission",
+              <MdOutlineLibraryBooks />,
+              null,
+              "",
+              "/Online-Admission"
+            )}
+            {navItem("AI Assistant", <FaRobot />, null, "", "/ai-assistant")}
+            {navItem("Settings", <MdOutlineSettings />, null, "", "/settings")}
+          </nav>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

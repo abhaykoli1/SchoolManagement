@@ -1,25 +1,23 @@
-// Layout.jsx
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  // Auto-hide sidebar on tablet/mobile
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1024) {
-        setIsSidebarOpen(false); // hide on tablet/mobile
+        setIsSidebarOpen(false);
       } else {
-        setIsSidebarOpen(true); // show on desktop
+        setIsSidebarOpen(true);
       }
     };
 
-    handleResize(); // run once on load
-    window.addEventListener("resize", handleResize); // watch for resize
-
+    handleResize();
+    window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -28,22 +26,33 @@ const Layout = () => {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen -ml-1 overflow-hidden relative">
       {/* Sidebar */}
-      {isSidebarOpen && (
-        <div className="fixed z-40 lg:static h-full">
-          <Sidebar toggleSidebar={toggleSidebar} />
-        </div>
-      )}
+      <AnimatePresence>
+        {isSidebarOpen && (
+          <motion.div
+            initial={{ x: -260, opacity: 1 }}
+            animate={{ x: 1, opacity: 1 }}
+            exit={{ x: -260, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className=" w-64 h-full fixed  z-50 bg-white shadow-lg"
+          >
+            <Sidebar
+              isSidebarOpen={isSidebarOpen}
+              toggleSidebar={toggleSidebar}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Main content */}
       <div
-        className={`flex flex-col flex-1 transition-all duration-300 ease-in-out ${
-          isSidebarOpen ? "lg:ml-0" : "ml-0"
+        className={`transition-all duration-500 ease-in-out w-full ${
+          isSidebarOpen ? "ml-64" : "ml-0"
         }`}
       >
         <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
-        <main className="p-4 overflow-y-auto flex-1 bg-gray-50">
+        <main className="p-4 overflow-y-auto flex-1 bg-gray-50 h-full">
           <Outlet />
         </main>
       </div>
