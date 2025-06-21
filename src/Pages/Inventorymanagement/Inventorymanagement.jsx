@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 import Addinventorymanagement from "./AddInventorymanagement";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-import InventoryHeader from "../../Components/InventoryHeader";
+import TableHeader from "../../Components/TableHeader";
 
 export default function Inventorymanagement() {
   return (
@@ -42,7 +42,7 @@ function Inventorymanagementlist() {
     <div className="bg-white p-6 rounded-lg shadow-md mt-5">
       {/* Header + Search */}
 
-      <InventoryHeader
+      <TableHeader
         title="Inventory List"
         search={search}
         setSearch={setSearch}

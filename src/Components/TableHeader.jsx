@@ -2,7 +2,7 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import PropTypes from "prop-types";
 
-const InventoryHeader = ({ title, search, setSearch }) => {
+const TableHeader = ({ title, search, setSearch }) => {
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-3">
       <h2 className="text-[17px] font-semibold uppercase">{title}</h2>
@@ -25,10 +25,10 @@ const InventoryHeader = ({ title, search, setSearch }) => {
   );
 };
 
-InventoryHeader.propTypes = {
+TableHeader.propTypes = {
   title: PropTypes.string.isRequired,
   search: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
 };
 
-export default InventoryHeader;
+export default TableHeader;
