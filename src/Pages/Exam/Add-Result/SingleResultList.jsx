@@ -71,8 +71,12 @@ function SingleList() {
               <tr key={exam.id} className="border-b border-gray-200">
                 <td className="py-2 px-3 whitespace-nowrap">{index + 1}</td>
                 <td className="py-2 px-3 whitespace-nowrap">{exam.title}</td>
-                <td className="py-2 px-3 whitespace-nowrap">{exam.publishDate}</td>
-                <td className="py-2 px-3 whitespace-nowrap">{exam.contentType}</td>
+                <td className="py-2 px-3 whitespace-nowrap">
+                  {exam.publishDate}
+                </td>
+                <td className="py-2 px-3 whitespace-nowrap">
+                  {exam.contentType}
+                </td>
                 <td className="py-2 px-3 whitespace-nowrap">{exam.fileLink}</td>
                 <td className="py-2 px-3 whitespace-nowrap">
                   <button className="px-3 hover:bg-gray-200 border rounded-xl cursor-pointer">

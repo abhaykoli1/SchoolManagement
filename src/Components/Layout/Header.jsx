@@ -7,7 +7,7 @@ import {
   FaCog,
   FaSignOutAlt,
   FaCompress,
-  FaUserClock
+  FaUserClock,
 } from "react-icons/fa";
 import { IoLogIn } from "react-icons/io5";
 import { FcUnlock } from "react-icons/fc";
@@ -20,7 +20,6 @@ import { useFullscreen } from "../../common/useFullscreen";
 const Header = ({ toggleSidebar, isSidebarOpen }) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
-
   const { isFullScreen, toggleFullScreen } = useFullscreen();
 
   return (
@@ -45,7 +44,8 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
             <input
               type="text"
               placeholder="Search here"
-              className="pl-9 pr-3 py-1 rounded-md border border-gray-200 bg-neutral-100 text-sm outline-none w-48 sm:w-64"
+              // className="search-input"
+              className="!pl-9 !pr-3 !py-1.5 !rounded !border !border-gray-200 !bg-neutral-100 !text-sm !outline-none !w-48 sm:!w-64"
             />
           </div>
 

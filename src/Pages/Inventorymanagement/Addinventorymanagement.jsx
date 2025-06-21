@@ -5,15 +5,13 @@ export default function Addinventorymanagement() {
   const [formData, setFormData] = useState({
     teacherName: "",
     section: "",
-     subject: "",
+    subject: "",
     title: "",
     assigndate: "",
     duedate: "",
- file: null,
-    status:"",
-   description: "",
-
-
+    file: null,
+    status: "",
+    description: "",
   });
 
   const handleChange = (e) => {
@@ -28,15 +26,15 @@ export default function Addinventorymanagement() {
 
   const handleReset = () => {
     setFormData({
-     teacherName: "",
-    section: "",
-     subject: "",
-    title: "",
-    assigndate: "",
-    duedate: "",
-     file: null,
-    status:"",
-   description: "",
+      teacherName: "",
+      section: "",
+      subject: "",
+      title: "",
+      assigndate: "",
+      duedate: "",
+      file: null,
+      status: "",
+      description: "",
     });
   };
 
@@ -44,76 +42,77 @@ export default function Addinventorymanagement() {
     <div className="bg-white p-4 rounded-lg shadow-md w-full">
       {/* Add Hostel management */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-4">
-        <h2 className="text-[18px] font-medium uppercase">Inventory Management</h2>
+        {/* <h2 className="text-[18px] font-medium uppercase"></h2> */}
+        <h2 className="text-[17px] font-semibold uppercase">
+          {" "}
+          Inventory Management
+        </h2>
       </div>
 
-          <form className="space-y-4">
+      <form className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Item Name */}
           <div>
-            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
-      Item Name
-            </label>
+            <label>Item Name</label>
             <input
               type="text"
               name="studentName"
+              placeholder="Enter Student Name"
               value={formData.studentName}
               onChange={handleChange}
               className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
-              placeholder=""
             />
           </div>
 
           {/* Item Category. */}
           <div>
             <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
-Item Category
+              Item Category
             </label>
             <input
               type="text"
+              placeholder="Enter Item Category"
               name="section"
               value={formData.section}
               onChange={handleChange}
               className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
-        
             />
           </div>
 
           {/*  Quantity */}
           <div>
             <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
-Quantity
+              Quantity
             </label>
-           <input
+            <input
               type="number"
               name="Quantity"
               value={formData.Quantity}
               onChange={handleChange}
               placeholder="0"
               className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
-        
             />
           </div>
 
-            {/* Supplier Name . */}
+          {/* Supplier Name . */}
           <div>
             <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
-Supplier Name
+              Supplier Name
             </label>
             <input
               type="text"
               name="Supplier"
+              placeholder="Enter Supplier Name"
               value={formData.Supplier}
               onChange={handleChange}
               className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
-        
             />
           </div>
 
           {/* Price per Unit */}
           <div>
             <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
-Price per Unit
+              Price per Unit
             </label>
             <input
               type="text"
@@ -125,12 +124,10 @@ Price per Unit
             />
           </div>
 
-
-
-        {/* Total Cost */}
+          {/* Total Cost */}
           <div>
             <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
-Total Cost
+              Total Cost
             </label>
             <input
               type="text"
@@ -142,12 +139,10 @@ Total Cost
             />
           </div>
 
-
-          
-                  {/* Condition */}
+          {/* Condition */}
           <div>
             <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
-Condition
+              Condition
             </label>
             <input
               type="text"
@@ -158,11 +153,7 @@ Condition
               className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
- 
-
         </div>
-
-
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2 w-full">
@@ -178,7 +169,7 @@ Condition
             className="bg-[#0b1d6e] text-[#D9D9D9] font[500] tracking-[0.1px] text-[15px] px-6 py-2 rounded-3xl hover:bg-[#1e2e89] w-full sm:w-auto"
             onClick={handleSubmit}
           >
-         Add Inventory 
+            Add Inventory
           </button>
         </div>
       </form>

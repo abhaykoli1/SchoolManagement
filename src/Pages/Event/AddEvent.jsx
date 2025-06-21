@@ -78,7 +78,6 @@ export default function AddEvent() {
               placeholder="Enter Designation"
             />
           </div>
-
         </div>
 
         {/* Buttons */}

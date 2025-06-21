@@ -1,2 +1,107 @@
-.New {
+label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+input,
+select {
+  font-size: 0.9rem !important;
+  padding: 8px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  width: 100% !important;
+}
+
+input::placeholder {
+  color: #999;
+  font-size: 0.9rem !important;
+  font-weight: 400;
+}
+
+textarea::placeholder {
+  color: #999;
+  font-size: 0.9rem !important;
+  font-weight: 400;
+}
+
+textarea {
+  font-size: 0.9rem !important;
+  padding: 8px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  width: 100% !important;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+/* Table Header */
+
+.table-search-input {
+  padding-left: 2.25rem !important;
+  padding-right: 0.75rem !important;
+  padding-top: 0.45rem !important;
+  padding-bottom: 0.45rem !important;
+  border-radius: 0.25rem !important;
+  background-color: #f3f4f6 !important;
+  border: 1px solid #e5e7eb !important;
+  font-size: 0.875rem !important;
+  outline: none !important;
+  width: 12rem !important;
+}
+
+@media (min-width: 640px) {
+  .search-input {
+    width: 16rem !important;
+  }
+}
+
+/* Table */
+.custom-table {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 6px;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+
+.custom-thead {
+  background-color: #f3f4f6;
+}
+
+.custom-thead-row th {
+  text-align: left;
+  font-size: 13px;
+  color: #4b5563;
+  padding: 10px 12px;
+  white-space: nowrap;
+}
+
+.custom-tbody-row {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.custom-tbody-row td {
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.action-icons {
+  padding: 4px 12px;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+  transition: background-color 0.2s;
+}
+
+.icon {
+  font-size: 16px;
+}
+.icon:hover {
+  scale: 1.1;
 }

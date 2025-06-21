@@ -26,27 +26,27 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-  <Route path="*" element={<NotFound />} />
-  <Route index element={<Navigate to="admin-dashboard" replace />} />
-  <Route path="admin-dashboard" element={<AdminDashboard />} />
-  <Route path="student-list" element={<StudentList />} />
-  <Route path="add-student" element={<AddStudent />} />
-  <Route path="student-attendance" element={<StudentAttendance />} />
-  <Route path="add-expert-teacher" element={<AddExpertTeacher />} />
-  <Route path="exam-result" element={<ExamManagement />} />
-  <Route path="single-result" element={<SingleResultList />} />
-  <Route path="multiple-result" element={<MultipleResultList />} />
-  <Route path="classes" element={<ClassSection />} />
-  <Route path="add-subject" element={<Subject />} />
-  <Route path="events" element={<Event />} /> 
-    <Route path="home-assignment" element={<Assignment />} /> 
-    <Route path="bock-library" element={<Library />} /> 
-    <Route path="transport-management" element={<Transportmanagement />} /> 
-    <Route path="fees" element={<Feesmanagement />} /> 
-    <Route path="hostel-management" element={<Hostelmanagement />} /> 
-    <Route path="inventory-management" element={<Inventorymanagement />} /> 
-    <Route path="Parent-portal" element={<Parentportal />} /> 
-    <Route path="Online-Admission" element={<Onlineadmission />} /> 
+        <Route path="*" element={<NotFound />} />
+        <Route index element={<Navigate to="admin-dashboard" replace />} />
+        <Route path="admin-dashboard" element={<AdminDashboard />} />
+        <Route path="student-list" element={<StudentList />} />
+        <Route path="add-student" element={<AddStudent />} />
+        <Route path="student-attendance" element={<StudentAttendance />} />
+        <Route path="add-expert-teacher" element={<AddExpertTeacher />} />
+        <Route path="exam-result" element={<ExamManagement />} />
+        <Route path="single-result" element={<SingleResultList />} />
+        <Route path="multiple-result" element={<MultipleResultList />} />
+        <Route path="classes" element={<ClassSection />} />
+        <Route path="add-subject" element={<Subject />} />
+        <Route path="events" element={<Event />} />
+        <Route path="home-assignment" element={<Assignment />} />
+        <Route path="bock-library" element={<Library />} />
+        <Route path="transport-management" element={<Transportmanagement />} />
+        <Route path="fees" element={<Feesmanagement />} />
+        <Route path="hostel-management" element={<Hostelmanagement />} />
+        <Route path="inventory-management" element={<Inventorymanagement />} />
+        <Route path="Parent-portal" element={<Parentportal />} />
+        <Route path="Online-Admission" element={<Onlineadmission />} />
       </Route>
     </Routes>
   );

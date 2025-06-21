@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 import AddEvent from "./AddEvent";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 export default function Event() {
   return (
@@ -55,31 +56,30 @@ function EventList() {
       {/* Responsive Table */}
 
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-6 overflow-x-auto">
-        <table className="w-full bg-white rounded-md text-sm">
-          <thead>
-            <tr className="bg-gray-100 text-xs text-left text-gray-600">
-              <th className="py-2 px-3 whitespace-nowrap">S NO.</th>
-              <th className="py-2 px-3 whitespace-nowrap">AUTHOR</th>
-              <th className="py-2 px-3 whitespace-nowrap">COMMENT</th>
-              <th className="py-2 px-3 whitespace-nowrap">IN RESPONSE TO </th>
-              <th className="py-2 px-3 whitespace-nowrap">SUBMITTED ON </th>
-              <th className="py-2 px-3 whitespace-nowrap">ACTIONS</th>
+        <table className="custom-table">
+          <thead className="custom-thead">
+            <tr className="custom-thead-row">
+              <th>S NO.</th>
+              <th>AUTHOR</th>
+              <th>COMMENT</th>
+              <th>IN RESPONSE TO</th>
+              <th>SUBMITTED ON</th>
+              <th>ACTIONS</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="custom-tbody">
             {examData.map((exam, index) => (
-              <tr key={exam.id} className="border-b border-gray-200">
-                <td className="py-2 px-3 whitespace-nowrap">{index + 1}</td>
-                <td className="py-2 px-3 whitespace-nowrap">{exam.author}</td>
-                <td className="py-2 px-3 whitespace-nowrap">{exam.comment}</td>
-                <td className="py-2 px-3 whitespace-nowrap">{exam.response}</td>
-                <td className="py-2 px-3 whitespace-nowrap">
-                  {exam.submitted}
-                </td>
-                <td className="py-2 px-3 whitespace-nowrap">
-                  <button className="px-3 hover:bg-gray-200 border rounded-xl cursor-pointer">
-                    <BsThreeDots className="text-lg" />
-                  </button>
+              <tr key={exam.id} className="custom-tbody-row">
+                <td>{index + 1}</td>
+                <td>{exam.author}</td>
+                <td>{exam.comment}</td>
+                <td>{exam.response}</td>
+                <td>{exam.submitted}</td>
+                <td>
+                  <span className="action-icons">
+                    <FiEdit className="icon" />
+                    <FiTrash2 className="icon delete-icon" />
+                  </span>
                 </td>
               </tr>
             ))}
