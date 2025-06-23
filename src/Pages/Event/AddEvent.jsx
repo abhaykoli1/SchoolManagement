@@ -27,12 +27,9 @@ export default function AddEvent() {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md w-full">
+    <div className="bg-white p-6 rounded-lg shadow-md w-full">
       {/* Header with Title and Toggle */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-4">
-        <h2 className="text-md font-medium">Add Event</h2>
-      </div>
-
+      <h2 className="text-[17px] font-semibold uppercase mb-6">Add Event</h2>
       <form className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Title */}
@@ -85,13 +82,13 @@ export default function AddEvent() {
           <button
             type="button"
             onClick={handleReset}
-            className="border border-[#0b1d6e] cursor-pointer text-[#0b1d6e] px-6 py-2 text-sm rounded-3xl w-full sm:w-auto"
+            className="!border !border-[#0b1d6e] cursor-pointer !text-[#0b1d6e] px-6 py-2 text-sm rounded w-full sm:w-auto"
           >
             Reset Form
           </button>
           <button
             type="submit"
-            className="bg-[#0b1d6e] cursor-pointer text-white px-6 py-2 text-sm rounded-3xl hover:bg-[#1e2e89] w-full sm:w-auto"
+            className="bg-[#0b1d6e] cursor-pointer text-white px-6 py-2 text-sm rounded hover:bg-[#1e2e89] w-full sm:w-auto"
             onClick={handleSubmit}
           >
             Add Event

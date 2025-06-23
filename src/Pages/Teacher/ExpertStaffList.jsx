@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { FaEllipsisV, FaSearch, FaCheckSquare } from "react-icons/fa";
-import { BsThreeDots } from "react-icons/bs";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { FaSearch } from "react-icons/fa";
 import profile from "../../assets/teacher/profile.svg";
+import TableHeader from "../../Components/TableHeader";
 
 const staffData = [
   {
@@ -22,7 +23,7 @@ const staffData = [
     id: 3,
     name: "Vishal Dadika",
     subject: "English",
-    designation: "Hindi Teacher",
+    designation: "English Teacher",
     image: "",
     success: true,
   },
@@ -30,6 +31,7 @@ const staffData = [
 
 export default function ExpertStaffList() {
   const [search, setSearch] = useState("");
+  const [selectedId, setSelectedId] = useState(null);
 
   const filteredData = staffData.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase())
@@ -38,43 +40,37 @@ export default function ExpertStaffList() {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md mt-5">
       {/* Header + Search */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-3">
-        <h2 className="text-sm font-semibold">Expert Staff List</h2>
-
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
-          <div className="flex items-center gap-2 border border-gray-300 px-3 py-1 rounded-md w-full sm:w-auto">
-            <FaSearch className="text-gray-500 text-sm" />
-            <input
-              type="text"
-              placeholder="Search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="outline-none text-sm bg-transparent flex-1"
-            />
-          </div>
-        </div>
-      </div>
+      <TableHeader title="Inventory" search={search} setSearch={setSearch} />
 
       {/* Responsive Table */}
-
-      <div className="grid grid-cols-1 lg:grid-cols-1 gap-6 overflow-x-auto">
-        <table className="w-full bg-white rounded-md text-sm">
-          <thead>
-            <tr className="bg-gray-100 text-xs text-left text-gray-600">
-              <th className="py-2 px-3 whitespace-nowrap">S NO.</th>
-              <th className="py-2 px-3 whitespace-nowrap">IMAGE</th>
-              <th className="py-2 px-3 whitespace-nowrap">NAME</th>
-              <th className="py-2 px-3 whitespace-nowrap">SUBJECT</th>
-              <th className="py-2 px-3 whitespace-nowrap">DESIGNATION</th>
-              <th className="py-2 px-3 whitespace-nowrap">ACTION</th>
+      <div className="overflow-x-auto">
+        <table className="custom-table mt-3">
+          <thead className="custom-thead">
+            <tr className="custom-thead-row">
+              <th>S NO.</th>
+              <th>IMAGE</th>
+              <th>NAME</th>
+              <th>SUBJECT</th>
+              <th>DESIGNATION</th>
+              <th className="action-label">ACTIONS</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="custom-tbody">
             {filteredData.length > 0 ? (
               filteredData.map((staff, index) => (
-                <tr key={staff.id} className="border-b">
-                  <td className="py-2 px-3 whitespace-nowrap">{index + 1}</td>
-                  <td className="py-2 px-3 whitespace-nowrap">
+                <tr
+                  key={staff.id}
+                  className={`custom-row ${
+                    staff.id === selectedId
+                      ? "selected-row"
+                      : index % 2 === 0
+                      ? "even-row"
+                      : "odd-row"
+                  }`}
+                  onClick={() => setSelectedId(staff.id)}
+                >
+                  <td>{index + 1}</td>
+                  <td>
                     {staff.image ? (
                       <img
                         src={staff.image}
@@ -100,17 +96,12 @@ export default function ExpertStaffList() {
                       </div>
                     )}
                   </td>
-                  <td className="py-2 px-3 whitespace-nowrap">{staff.name}</td>
-                  <td className="py-2 px-3 whitespace-nowrap">
-                    {staff.subject}
-                  </td>
-                  <td className="py-2 px-3 whitespace-nowrap">
-                    {staff.designation}
-                  </td>
-                  <td className="py-2 px-3 whitespace-nowrap">
-                    <button className="px-3 hover:bg-gray-200 border rounded-xl cursor-pointer">
-                      <BsThreeDots className="text-lg" />
-                    </button>
+                  <td>{staff.name}</td>
+                  <td>{staff.subject}</td>
+                  <td>{staff.designation}</td>
+                  <td className="action-icons">
+                    <span className="edit-icon">✏️</span>
+                    <span className="delete-icon">🗑️</span>
                   </td>
                 </tr>
               ))

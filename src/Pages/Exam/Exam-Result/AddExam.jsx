@@ -38,10 +38,12 @@ export default function AddExam() {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md w-full">
+    <div className="bg-white p-6 rounded-lg shadow-md w-full">
       {/* Header with Title and Toggle */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-4">
-        <h2 className="text-sm font-medium">Exam Management</h2>
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+        <h2 className="text-[17px] font-semibold uppercase ">
+          Exam Management
+        </h2>
 
         {/* Toggle Section */}
         <div className="flex flex-col md:flex-row md:gap-4 gap-2 text-xs items-start md:items-center">
@@ -90,7 +92,7 @@ export default function AddExam() {
               value={formData.examName}
               onChange={handleChange}
               className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
-              placeholder="Annual Exam"
+              placeholder="Enter Exam Name"
             />
           </div>
 
@@ -104,6 +106,7 @@ export default function AddExam() {
               name="classSection"
               value={formData.classSection}
               onChange={handleChange}
+              placeholder="Enter Class & Section"
               className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
@@ -118,6 +121,7 @@ export default function AddExam() {
               name="subject"
               value={formData.subject}
               onChange={handleChange}
+              placeholder="Enter Subject"
               className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
@@ -132,6 +136,7 @@ export default function AddExam() {
               name="examDate"
               value={formData.examDate}
               onChange={handleChange}
+              placeholder="Select Exam Date"
               className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
@@ -146,6 +151,7 @@ export default function AddExam() {
               name="startEndTime"
               value={formData.startEndTime}
               onChange={handleChange}
+              placeholder="e.g., 10:00 AM – 12:00 PM"
               className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
@@ -160,6 +166,7 @@ export default function AddExam() {
               name="totalMarks"
               value={formData.totalMarks}
               onChange={handleChange}
+              placeholder="Enter Total Marks"
               className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
@@ -173,6 +180,7 @@ export default function AddExam() {
               name="passingMarks"
               value={formData.passingMarks}
               onChange={handleChange}
+              placeholder="Select Passing Marks"
               className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Grade</option>
@@ -194,8 +202,8 @@ export default function AddExam() {
             value={formData.description}
             onChange={handleChange}
             rows={4}
+            placeholder="Enter Exam Description"
             className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
-            placeholder="Description"
           ></textarea>
         </div>
 
@@ -204,16 +212,16 @@ export default function AddExam() {
           <button
             type="button"
             onClick={handleReset}
-            className="border border-[#0b1d6e] text-[#0b1d6e] px-6 py-2 text-sm rounded-3xl w-full sm:w-auto"
+            className="!border !border-[#0b1d6e] cursor-pointer !text-[#0b1d6e] px-6 py-2 text-sm rounded w-full sm:w-auto"
           >
             Reset Form
           </button>
           <button
             type="submit"
-            className="bg-[#0b1d6e] text-white px-6 py-2 text-sm rounded-3xl hover:bg-[#1e2e89] w-full sm:w-auto"
+            className="bg-[#0b1d6e] cursor-pointer text-white px-6 py-2 text-sm rounded hover:bg-[#1e2e89] w-full sm:w-auto"
             onClick={handleSubmit}
           >
-            Add Front Result
+            Add Expert Teacher
           </button>
         </div>
       </form>

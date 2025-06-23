@@ -9,6 +9,7 @@ import profile7 from "../../../assets/student/profile7.svg";
 import profile8 from "../../../assets/student/profile8.svg";
 import { FiPhone, FiMessageSquare, FiMail } from "react-icons/fi";
 import StudentFormFilter from "./StudentFormFilter";
+import TableHeader from "../../../Components/TableHeader";
 
 const students = [
   {
@@ -113,48 +114,37 @@ export default function StudentListFilter() {
       setSelectedId(students[0].id);
     }
   }, [students]);
+  const [search, setSearch] = useState("");
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-6">
       {/* Table: 75% width */}
 
       <div className="bg-white rounded-xl p-4 shadow-sm relative w-full lg:col-span-3">
-        <div className="flex flex-col sm:flex-row sm:items-center bg-white border-b p-4 gap-3 sm:gap-4">
-          <button className="border px-3 py-2 rounded text-sm w-full sm:w-auto">
-            Add filter ▼
-          </button>
-          <input
-            type="text"
-            placeholder="Search for a student by name or email"
-            className="border bg-gray-100 px-3 py-2 rounded text-sm w-full sm:flex-1"
-          />
-          <button className="bg-[#0b1d6e] text-white px-6 py-2 rounded text-sm w-full sm:w-auto">
-            Search
-          </button>
-        </div>
+        <TableHeader title="Inventory" search={search} setSearch={setSearch} />
 
         <div className="overflow-x-auto">
-          <table className="min-w-full text-xs md:text-sm text-left">
-            <thead className="bg-gray-100 text-gray-600 font-medium">
-              <tr>
-                <th className="p-3">Name</th>
-                <th className="p-3">Student ID</th>
-                <th className="p-3">Email address</th>
-                <th className="p-3">Class</th>
-                <th className="p-3">Gender</th>
-                <th className="p-3">More Actions</th>
+          <table className="custom-table">
+            <thead className="custom-thead">
+              <tr className="custom-thead-row">
+                <th>Name</th>
+                <th>Student ID</th>
+                <th>Email address</th>
+                <th>Class</th>
+                <th>Gender</th>
+                <th className="action-label">ACTIONS</th>
               </tr>
             </thead>
             <tbody>
               {students.map((s, index) => (
                 <tr
                   key={s.id}
-                  className={`hover:bg-blue-50 cursor-pointer ${
+                  className={`custom-row ${
                     s.id === selectedId
-                      ? "bg-[#0b1d6e] text-white"
+                      ? "selected-row"
                       : index % 2 === 0
-                      ? "bg-white"
-                      : "bg-gray-50"
+                      ? "even-row"
+                      : "odd-row"
                   }`}
                   onClick={() => {
                     setSelectedId(s.id);
@@ -163,20 +153,21 @@ export default function StudentListFilter() {
                     }
                   }}
                 >
-                  <td className="p-3 flex items-center gap-2">
+                  <td className="name-cell">
                     <img
                       src={s.avatar || "/default.png"}
                       alt="avatar"
-                      className="w-6 h-6 rounded-full"
+                      className="avatar"
                     />
                     {s.name}
                   </td>
-                  <td className="p-3">{s.id}</td>
-                  <td className="p-3">{s.email}</td>
-                  <td className="p-3">{s.class}</td>
-                  <td className="p-3">{s.gender}</td>
-                  <td className="p-3 flex items-center gap-1">
-                    <span>Edit icon ✏️</span>
+                  <td>{s.id}</td>
+                  <td>{s.email}</td>
+                  <td>{s.class}</td>
+                  <td>{s.gender}</td>
+                  <td className="action-icons">
+                    <span className="edit-icon">✏️</span>
+                    <span className="delete-icon">🗑️</span>
                   </td>
                 </tr>
               ))}

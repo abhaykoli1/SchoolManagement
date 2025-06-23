@@ -1,26 +1,22 @@
 import React from "react";
-import { FaSearch } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 const TableHeader = ({ title, search, setSearch }) => {
   return (
-    <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-3">
-      <h2 className="text-[17px] font-semibold uppercase">{title}</h2>
-
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
-        <div className="hidden sm:block relative ml-2">
-          <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
-            <FaSearch />
-          </span>
-          <input
-            type="text"
-            placeholder="Search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="table-search-input"
-          />
-        </div>
-      </div>
+    <div className="flex flex-col sm:flex-row sm:items-center bg-white border-b py-4 gap-3 sm:gap-4">
+      <button className="!border !border-black !text-black px-3 py-2 rounded text-sm w-full sm:w-auto">
+        Add filter ▼
+      </button>
+      <input
+        type="text"
+        placeholder={`Search for ${title.toLowerCase()}`}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="border bg-gray-100 px-3 py-2 rounded text-sm w-full sm:flex-1"
+      />
+      <button className="bg-[#0b1d6e] text-white px-6 py-2 rounded text-sm w-full sm:w-auto">
+        Search
+      </button>
     </div>
   );
 };

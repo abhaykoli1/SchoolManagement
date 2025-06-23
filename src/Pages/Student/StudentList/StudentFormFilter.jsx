@@ -1,8 +1,8 @@
 export default function StudentFormFilter() {
   return (
     <div className="bg-[#f9f8f5] flex items-center justify-cente">
-      <form className="bg-white p-4 rounded-lg shadow-md w-full">
-        <h2 className="text-lg font-semibold mb-6">
+      <form className="bg-white p-6 rounded-lg shadow-md w-full">
+        <h2 className="text-[17px] font-semibold uppercase mb-6">
           Student Information Panel
         </h2>
 
@@ -13,6 +13,7 @@ export default function StudentFormFilter() {
               NAME
             </label>
             <input
+              placeholder="Enter Student Name"
               type="text"
               className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
@@ -50,6 +51,7 @@ export default function StudentFormFilter() {
               EMAIL ADDRESS
             </label>
             <input
+              placeholder="Enter Email Address"
               type="email"
               className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
@@ -61,6 +63,7 @@ export default function StudentFormFilter() {
               PHONE NUMBER
             </label>
             <input
+              placeholder="Enter Phone Number"
               type="tel"
               className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
@@ -78,5 +81,3 @@ export default function StudentFormFilter() {
     </div>
   );
 }
-
-

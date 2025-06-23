@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function AddClassSection() {
   const [formData, setFormData] = useState({
-      class: "",
-      section: "",
-      publishDate: "",
-      file: null,
+    class: "",
+    section: "",
+    publishDate: "",
+    file: null,
   });
 
   const handleChange = (e) => {
@@ -34,10 +34,7 @@ export default function AddClassSection() {
   return (
     <div className="bg-white p-4 rounded-lg shadow-md w-full">
       {/* Header with Title and Toggle */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-4">
-        <h2 className="text-md font-medium">Class</h2>
-      </div>
-
+      <h2 className="text-[17px] font-semibold uppercase mb-6">Classes</h2>
       <form className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Class & Section */}
@@ -105,9 +102,9 @@ export default function AddClassSection() {
               />
               <button
                 type="button"
-                className="absolute top-1/2 right-1 transform -translate-y-1/2 bg-[#0b1d6e] text-white text-sm font-semibold px-4 py-1 rounded-md hover:bg-[#1e2e89] transition"
+                className="absolute top-1/2 right-1 transform -translate-y-1/2 bg-[#0b1d6e] text-white text-xs  px-4 !py-1.5 rounded hover:bg-[#1e2e89] transition"
               >
-                FILE UPLOAD
+                UPLOAD
               </button>
             </div>
           </div>
@@ -118,16 +115,16 @@ export default function AddClassSection() {
           <button
             type="button"
             onClick={handleReset}
-            className="border border-[#0b1d6e] text-[#0b1d6e] px-6 py-2 text-sm rounded-3xl w-full sm:w-auto"
+            className="!border !border-[#0b1d6e] cursor-pointer !text-[#0b1d6e] px-6 py-2 text-sm rounded w-full sm:w-auto"
           >
             Reset Form
           </button>
           <button
             type="submit"
-            className="bg-[#0b1d6e] text-white px-6 py-2 text-sm rounded-3xl hover:bg-[#1e2e89] w-full sm:w-auto"
+            className="bg-[#0b1d6e] cursor-pointer text-white px-6 py-2 text-sm rounded hover:bg-[#1e2e89] w-full sm:w-auto"
             onClick={handleSubmit}
           >
-            Add Front Result
+            Add Class
           </button>
         </div>
       </form>
