@@ -35,7 +35,7 @@ export default function AddSubject() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Class */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               CLASS
             </label>
             <input
@@ -43,14 +43,14 @@ export default function AddSubject() {
               name="class"
               value={formData.class}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               placeholder="Enter Designation"
             />
           </div>
 
           {/* Subject */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               SUBJECT
             </label>
             <input
@@ -58,14 +58,14 @@ export default function AddSubject() {
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               placeholder="Enter Designation"
             />
           </div>
 
           {/* Section */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               SECTION
             </label>
             <input
@@ -73,7 +73,7 @@ export default function AddSubject() {
               name="section"
               value={formData.section}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               placeholder="Enter Designation"
             />
           </div>

@@ -30,19 +30,18 @@ export default function AddExpertTeacher() {
           Add Expert Teacher
         </h2>
 
-        {/* <h2 className="text-lg font-semibold mb-6">Add Expert Teacher</h2> */}
         <form className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Teacher Dropdown */}
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-2">
+              <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
                 TEACHER
               </label>
               <select
                 name="teacher"
                 value={formData.teacher}
                 onChange={handleChange}
-                className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+                className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               >
                 <option value="">Select Teacher</option>
                 <option value="john">John Doe</option>
@@ -52,7 +51,7 @@ export default function AddExpertTeacher() {
 
             {/* Designation Input */}
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-2">
+              <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
                 DESIGNATION
               </label>
               <input
@@ -60,21 +59,21 @@ export default function AddExpertTeacher() {
                 name="designation"
                 value={formData.designation}
                 onChange={handleChange}
-                className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+                className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
                 placeholder="Enter Designation"
               />
             </div>
 
             {/* Subject Dropdown */}
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-2">
+              <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
                 ADD SUBJECT
               </label>
               <select
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3e"
+                className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3e"
               >
                 <option value="">Select Subject</option>
                 <option value="math">Mathematics</option>
@@ -84,7 +83,7 @@ export default function AddExpertTeacher() {
 
             {/* Phone Input */}
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-2">
+              <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
                 PHONE NUMBER
               </label>
               <input
@@ -92,13 +91,13 @@ export default function AddExpertTeacher() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+                className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
                 placeholder="Enter Phone Number"
               />
             </div>
             {/* File Upload */}
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-2">
+              <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
                 Upload File
               </label>
               <div className="relative w-full">

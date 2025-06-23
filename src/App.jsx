@@ -21,6 +21,7 @@ import Hostelmanagement from "./Pages/Hostelmanagement/Hostelmanagement";
 import Inventorymanagement from "./Pages/Inventorymanagement/Inventorymanagement";
 import Parentportal from "./Pages/Parentportal/Parentportal";
 import Onlineadmission from "./Pages/Onlineadmission/Onlineadmission";
+import AttendanceManagement from "./Pages/Attendance/AttendanceManagement";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="classes" element={<ClassSection />} />
         <Route path="add-subject" element={<Subject />} />
         <Route path="events" element={<Event />} />
+        <Route path="attendance-management" element={<AttendanceManagement />} />
         <Route path="home-assignment" element={<Assignment />} />
         <Route path="bock-library" element={<Library />} />
         <Route path="transport-management" element={<Transportmanagement />} />

@@ -83,7 +83,7 @@ export default function AddExam() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Exam Name */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               EXAM NAME
             </label>
             <input
@@ -91,14 +91,14 @@ export default function AddExam() {
               name="examName"
               value={formData.examName}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               placeholder="Enter Exam Name"
             />
           </div>
 
           {/* Class & Section */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               CLASS & SECTION
             </label>
             <input
@@ -107,13 +107,13 @@ export default function AddExam() {
               value={formData.classSection}
               onChange={handleChange}
               placeholder="Enter Class & Section"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Subject */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               SUBJECT
             </label>
             <input
@@ -122,13 +122,13 @@ export default function AddExam() {
               value={formData.subject}
               onChange={handleChange}
               placeholder="Enter Subject"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Exam Date */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               EXAM DATE
             </label>
             <input
@@ -137,13 +137,13 @@ export default function AddExam() {
               value={formData.examDate}
               onChange={handleChange}
               placeholder="Select Exam Date"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Start–End Time */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               START TIME – END TIME
             </label>
             <input
@@ -152,13 +152,13 @@ export default function AddExam() {
               value={formData.startEndTime}
               onChange={handleChange}
               placeholder="e.g., 10:00 AM – 12:00 PM"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Total Marks */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               TOTAL MARKS
             </label>
             <input
@@ -167,13 +167,13 @@ export default function AddExam() {
               value={formData.totalMarks}
               onChange={handleChange}
               placeholder="Enter Total Marks"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Passing Marks */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               PASSING MARKS
             </label>
             <select
@@ -181,7 +181,7 @@ export default function AddExam() {
               value={formData.passingMarks}
               onChange={handleChange}
               placeholder="Select Passing Marks"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Grade</option>
               <option value="A+">A+</option>
@@ -194,7 +194,7 @@ export default function AddExam() {
 
         {/* Description */}
         <div>
-          <label className="block text-xs font-semibold text-gray-700 mb-2">
+          <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
             DESCRIPTION
           </label>
           <textarea
@@ -203,7 +203,7 @@ export default function AddExam() {
             onChange={handleChange}
             rows={4}
             placeholder="Enter Exam Description"
-            className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+            className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
           ></textarea>
         </div>
 

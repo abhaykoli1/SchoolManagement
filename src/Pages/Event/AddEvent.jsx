@@ -34,7 +34,7 @@ export default function AddEvent() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Title */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               EVENT TITLE
             </label>
             <input
@@ -42,14 +42,14 @@ export default function AddEvent() {
               name="title"
               value={formData.title}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               placeholder="Enter Designation"
             />
           </div>
 
           {/* Date */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               EVENT DATE
             </label>
             <input
@@ -57,13 +57,13 @@ export default function AddEvent() {
               name="Date"
               value={formData.Date}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Title */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               EVENT TIME
             </label>
             <input
@@ -71,7 +71,7 @@ export default function AddEvent() {
               name="time"
               value={formData.time}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               placeholder="Enter Designation"
             />
           </div>

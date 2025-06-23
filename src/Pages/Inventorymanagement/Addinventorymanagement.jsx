@@ -49,7 +49,7 @@ export default function Addinventorymanagement() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Item Name */}
           <div>
-            <label>Item Name</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">Item Name</label>
             <input
               type="text"
               name="studentName"
