@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { FaCircleNotch } from "react-icons/fa";
-import axiosInstance from "../../api/axiosInstance";
-import { showSuccessToast, showErrorToast } from "../../utils/toastUtils";
 
 export default function LoginForm() {
   const [formData, setFormData] = useState({
@@ -11,7 +8,6 @@ export default function LoginForm() {
     client_id: "",
     client_secret: "",
   });
-  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,8 +16,6 @@ export default function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-
     console.log(formData);
   };
 
@@ -109,24 +103,12 @@ export default function LoginForm() {
               />
             </div>
 
-            <div className="col-span-1 md:col-span-2">
+            <div>
               <button
-                onClick={handleSubmit}
-                disabled={loading}
-                className={`w-full text-white py-2 rounded-md transition flex items-center justify-center gap-2 ${
-                  loading
-                    ? "bg-gray-500 cursor-not-allowed"
-                    : "bg-[#9B594F] hover:bg-[#874d45]"
-                }`}
+                type="submit"
+                className="w-full bg-[#9B594F] text-white py-2 rounded-md hover:bg-[#874d45] transition"
               >
-                {loading ? (
-                  <>
-                    <FaCircleNotch className="animate-spin h-4 w-4" />
-                    Logging in...
-                  </>
-                ) : (
-                  "Login"
-                )}
+                Login
               </button>
             </div>
           </form>

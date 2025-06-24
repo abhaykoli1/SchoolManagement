@@ -1,9 +1,4 @@
 import React, { useState } from "react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { FaCircleNotch } from "react-icons/fa";
-import axiosInstance from "../../api/axiosInstance";
-import { showSuccessToast, showErrorToast } from "../../utils/toastUtils";
 
 export default function SignupForm() {
   const [formData, setFormData] = useState({
@@ -20,50 +15,19 @@ export default function SignupForm() {
     image: null,
   });
 
-  const [loading, setLoading] = useState(false);
-
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: name === "image" ? files[0] : value,
-    });
+    if (name === "image") {
+      setFormData({ ...formData, image: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-
-  if (!formData.image) {
-    showErrorToast("Please upload an image before submitting.");
-    setLoading(false);
-    return;
-  }
-
-  const payload = new FormData();
-  for (const key in formData) {
-    if (key === "image" && formData[key]) {
-      payload.append(key, formData[key]);
-    } else if (key !== "image") {
-      payload.append(key, formData[key]);
-    }
-  }
-
-  try {
-    const response = await axiosInstance.post(
-      "/api/school/register-school",
-      payload
-    );
-    showSuccessToast(response.data.message);
-    console.log("Success:", response.data);
-  } catch (error) {
-    console.error("Registration Error:", error);
-    const detail = error?.response?.data?.detail || "Something went wrong.";
-    showErrorToast(detail);
-  } finally {
-    setLoading(false);
-  }
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
 
   return (
     <div className="min-h-screen bg-[#FBFBFB] flex flex-col md:flex-row overflow-hidden">
@@ -83,7 +47,10 @@ const handleSubmit = async (e) => {
             School Registration Form
           </h2>
 
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          >
             <div className="col-span-1">
               <label className="block mb-1 text-sm font-medium">
                 School Name *
@@ -218,28 +185,15 @@ const handleSubmit = async (e) => {
 
             <div className="col-span-1 md:col-span-2">
               <button
-                onClick={handleSubmit}
-                disabled={loading}
-                className={`w-full text-white py-2 rounded-md transition flex items-center justify-center gap-2 ${
-                  loading
-                    ? "bg-gray-500 cursor-not-allowed"
-                    : "bg-[#9B594F] hover:bg-[#874d45]"
-                }`}
+                type="submit"
+                className="w-full bg-[#9B594F] text-white py-2 rounded-md hover:bg-[#874d45] transition"
               >
-                {loading ? (
-                  <>
-                    <FaCircleNotch className="animate-spin h-4 w-4" />
-                    Saving...
-                  </>
-                ) : (
-                  "Signup"
-                )}
+                Submit Registration
               </button>
             </div>
           </form>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 }
