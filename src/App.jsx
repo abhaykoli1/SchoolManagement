@@ -22,6 +22,8 @@ import Inventorymanagement from "./Pages/Inventorymanagement/Inventorymanagement
 import Parentportal from "./Pages/Parentportal/Parentportal";
 import Onlineadmission from "./Pages/Onlineadmission/Onlineadmission";
 import AttendanceManagement from "./Pages/Attendance/AttendanceManagement";
+import LoginForm from "./Pages/Users/LoginForm";
+import SignupForm from "./Pages/Users/SignupForm";
 
 function App() {
   return (
@@ -40,7 +42,10 @@ function App() {
         <Route path="classes" element={<ClassSection />} />
         <Route path="add-subject" element={<Subject />} />
         <Route path="events" element={<Event />} />
-        <Route path="attendance-management" element={<AttendanceManagement />} />
+        <Route
+          path="attendance-management"
+          element={<AttendanceManagement />}
+        />
         <Route path="home-assignment" element={<Assignment />} />
         <Route path="bock-library" element={<Library />} />
         <Route path="transport-management" element={<Transportmanagement />} />
@@ -50,6 +55,8 @@ function App() {
         <Route path="Parent-portal" element={<Parentportal />} />
         <Route path="Online-Admission" element={<Onlineadmission />} />
       </Route>
+      <Route path="login" element={<LoginForm />} />
+      <Route path="signup" element={<SignupForm />} />
     </Routes>
   );
 }
