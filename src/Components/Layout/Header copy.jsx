@@ -16,7 +16,6 @@ import { RxCross2 } from "react-icons/rx";
 import { GoScreenFull } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { useFullscreen } from "../../common/useFullscreen";
-import { logout } from "../../utils/logout";
 
 const Header = ({ toggleSidebar, isSidebarOpen }) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -140,16 +139,14 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
                   <span>Settings</span>
                 </Link>
                 <hr className="my-2 border-gray-200" />
-                <p
-                  onClick={() => {
-                    setShowProfileMenu(false);
-                    logout();
-                  }}
-                  className="flex cursor-pointer items-center gap-2 px-4 py-2 hover:bg-gray-100 text-red-500"
+                <Link
+                  to="#"
+                  onClick={() => setShowProfileMenu(false)}
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 text-red-500"
                 >
                   <FaSignOutAlt />
                   <span>Logout</span>
-                </p>
+                </Link>
               </div>
             )}
           </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaCircleNotch } from "react-icons/fa";
-import axiosInstance from "../../api/axiosInstance";
+import axiosInstance from "../../Api/axiosInstance";
 import { showSuccessToast, showErrorToast } from "../../utils/toastUtils";
 
 export default function SignupForm() {
@@ -30,40 +30,40 @@ export default function SignupForm() {
     });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  if (!formData.image) {
-    showErrorToast("Please upload an image before submitting.");
-    setLoading(false);
-    return;
-  }
-
-  const payload = new FormData();
-  for (const key in formData) {
-    if (key === "image" && formData[key]) {
-      payload.append(key, formData[key]);
-    } else if (key !== "image") {
-      payload.append(key, formData[key]);
+    if (!formData.image) {
+      showErrorToast("Please upload an image before submitting.");
+      setLoading(false);
+      return;
     }
-  }
 
-  try {
-    const response = await axiosInstance.post(
-      "/api/school/register-school",
-      payload
-    );
-    showSuccessToast(response.data.message);
-    console.log("Success:", response.data);
-  } catch (error) {
-    console.error("Registration Error:", error);
-    const detail = error?.response?.data?.detail || "Something went wrong.";
-    showErrorToast(detail);
-  } finally {
-    setLoading(false);
-  }
-};
+    const payload = new FormData();
+    for (const key in formData) {
+      if (key === "image" && formData[key]) {
+        payload.append(key, formData[key]);
+      } else if (key !== "image") {
+        payload.append(key, formData[key]);
+      }
+    }
+
+    try {
+      const response = await axiosInstance.post(
+        "/api/school/register-school",
+        payload
+      );
+      showSuccessToast(response.data.message);
+      console.log("Success:", response.data);
+    } catch (error) {
+      console.error("Registration Error:", error);
+      const detail = error?.response?.data?.detail || "Something went wrong.";
+      showErrorToast(detail);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#FBFBFB] flex flex-col md:flex-row overflow-hidden">

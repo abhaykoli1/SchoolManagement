@@ -15,8 +15,8 @@ export default function LoginForm() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [credentialsLoading, setCredentialsLoading] = useState(true);
 
+  // 🔄 Fetch client_id and client_secret based on IP
   useEffect(() => {
     const fetchClientData = async () => {
       try {
@@ -31,22 +31,24 @@ export default function LoginForm() {
         });
 
         const { client_id, client_secret } = res.data;
-
-        setFormData((prev) => ({
-          ...prev,
-          client_id,
-          client_secret,
-        }));
+        if (client_id && client_secret) {
+          setFormData((prev) => ({
+            ...prev,
+            client_id,
+            client_secret,
+          }));
+        } else {
+          showErrorToast("Client initialization failed.");
+        }
       } catch (err) {
-        showErrorToast("Client init failed.");
-      } finally {
-        setCredentialsLoading(false);
+        showErrorToast("Failed to get client data. Check your network.");
       }
     };
 
     fetchClientData();
   }, []);
 
+  // 🧾 Input change handler
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -55,6 +57,7 @@ export default function LoginForm() {
     }));
   };
 
+  // 🔐 Submit login
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -81,11 +84,13 @@ export default function LoginForm() {
       sessionStorage.setItem("authToken", access_token);
 
       showSuccessToast(message || "Login successful!");
+
       setTimeout(() => {
         window.location.href = "/";
       }, 1000);
     } catch (err) {
       const errorData = err?.response?.data;
+
       if (Array.isArray(errorData?.detail)) {
         const messages = errorData.detail.map((e) => e.msg).join(", ");
         showErrorToast(messages);
@@ -100,8 +105,7 @@ export default function LoginForm() {
   return (
     <div className="min-h-screen bg-[#FBFBFB] flex flex-col md:flex-row">
       <ToastContainer />
-
-      {/* Left image */}
+      {/* Left Image */}
       <div className="hidden md:flex md:w-1/2 items-center justify-center bg-white p-6">
         <img
           src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg"
@@ -110,30 +114,12 @@ export default function LoginForm() {
         />
       </div>
 
-      {/* Right form */}
+      {/* Right Form */}
       <div className="md:w-1/2 w-full p-6 flex items-center justify-center">
         <div className="w-[90%] mx-auto max-w-xl">
           <h2 className="text-2xl text-center font-semibold mb-6 text-[#1F2A44]">
             Login Form
           </h2>
-
-          {/* Credentials status indicator */}
-          <div className="mb-4 flex justify-end">
-            {credentialsLoading ? (
-              <p className="text-xs text-gray-500 italic">
-                Initializing credentials...
-              </p>
-            ) : formData.client_id && formData.client_secret ? (
-              <p className="text-green-600 text-xs font-medium flex items-center gap-2">
-                <span className="h-2 w-2 bg-green-600 rounded-full animate-pulse"></span>
-                Client credentials ready
-              </p>
-            ) : (
-              <p className="text-red-500 text-xs font-medium">
-                Failed to load client credentials
-              </p>
-            )}
-          </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Username */}
@@ -166,7 +152,7 @@ export default function LoginForm() {
               />
             </div>
 
-            {/* Scope (optional) */}
+            {/* Scope (Optional) */}
             <div>
               <label className="block mb-1 text-sm font-medium">Scope</label>
               <input
@@ -178,21 +164,41 @@ export default function LoginForm() {
               />
             </div>
 
-            {/* Hidden Inputs for Client ID & Secret */}
-            <input type="hidden" name="client_id" value={formData.client_id} />
-            <input
-              type="hidden"
-              name="client_secret"
-              value={formData.client_secret}
-            />
+            {/* Client ID */}
+            <div>
+              <label className="block mb-1 text-sm font-medium">
+                Client ID
+              </label>
+              <input
+                type="text"
+                name="client_id"
+                value={formData.client_id}
+                readOnly
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm bg-gray-100"
+              />
+            </div>
 
-            {/* Submit Button */}
+            {/* Client Secret */}
+            <div>
+              <label className="block mb-1 text-sm font-medium">
+                Client Secret
+              </label>
+              <input
+                type="text"
+                name="client_secret"
+                value={formData.client_secret}
+                readOnly
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm bg-gray-100"
+              />
+            </div>
+
+            {/* Submit */}
             <div>
               <button
                 type="submit"
-                disabled={loading || credentialsLoading}
+                disabled={loading}
                 className={`w-full text-white py-2 rounded-md flex items-center justify-center gap-2 transition ${
-                  loading || credentialsLoading
+                  loading
                     ? "bg-gray-500 cursor-not-allowed"
                     : "bg-[#9B594F] hover:bg-[#874d45]"
                 }`}
