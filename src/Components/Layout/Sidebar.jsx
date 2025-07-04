@@ -102,6 +102,7 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
           className="w-64 h-screen bg-[#0F2169] text-white flex flex-col fixed z-50 top-0 left-0 lg:relative"
         >
           <button
+          
             className="absolute top-3 right-1 text-red-500 text-3xl lg:hidden cursor-pointer"
             onClick={toggleSidebar}
           >
