@@ -1,11 +1,33 @@
 import { useState } from "react";
+import AddClass from "./AddClass";
 import AddClassSection from "./AddClassSection";
 import TableHeader from "../../Components/TableHeader";
+import { RxCross2 } from "react-icons/rx";
 
 export default function ClassSection() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
-      <AddClassSection />
+      <AddClassSection setShowModal={setShowModal} />
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center">
+          <div className="relative w-[90%] max-w-md bg-white rounded-lg shadow-lg p-6 transform transition-transform duration-300 scale-100">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-3 text-red-500 hover:text-red-700 transition-colors"
+            >
+              <RxCross2 className="w-5 h-5" />
+            </button>
+
+            <AddClass />
+          </div>
+        </div>
+      )}
+
       <SectionList />
     </>
   );

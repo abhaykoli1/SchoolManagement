@@ -26,7 +26,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="flex -ml-1 overflow-hidden relative">
+    <div className="flex -ml-1 min-h-screen overflow-hidden relative">
       {/* Sidebar */}
       <AnimatePresence>
         {isSidebarOpen && (

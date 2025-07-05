@@ -7,7 +7,7 @@ export const isAuthenticated = () => {
 
 export const logout = () => {
   localStorage.removeItem("authToken");
-  localStorage.removeItem("userId");
-  localStorage.removeItem("userType");
+  localStorage.removeItem("schoolId");
+  localStorage.removeItem("schoolType");
   sessionStorage.removeItem("authToken");
 };

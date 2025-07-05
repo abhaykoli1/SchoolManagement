@@ -76,8 +76,8 @@ export default function LoginForm() {
       const { access_token, type, id, message } = res.data;
 
       localStorage.setItem("authToken", access_token);
-      localStorage.setItem("userType", type);
-      localStorage.setItem("userId", id);
+      localStorage.setItem("schoolType", type);
+      localStorage.setItem("schoolId", id);
       sessionStorage.setItem("authToken", access_token);
 
       showSuccessToast(message || "Login successful!");

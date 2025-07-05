@@ -27,9 +27,11 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
     <>
       <header className="flex items-center justify-between px-4 py-2 bg-white shadow sticky top-0 z-30">
         <div className="flex items-center gap-2">
+          <Link to="/">
           <h1 className="text-[#3D5EE1] font-bold text-lg">
             {isSidebarOpen ? "" : "EDU"}
           </h1>
+          </Link>
 
           <button
             onClick={toggleSidebar}

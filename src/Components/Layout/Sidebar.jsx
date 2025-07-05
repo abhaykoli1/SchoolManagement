@@ -109,7 +109,7 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
           </button>
 
           <div className="bg-white text-[#3D5EE1] text-center  h-[50px] flex items-center justify-center shado font-bold text-xl">
-            EDU DASHBOARD
+          <Link to="/">  EDU DASHBOARD  </Link>
           </div>
 
           <nav className="flex-1 overflow-y-auto px-2 py-4 space-y-3 text-sm">
