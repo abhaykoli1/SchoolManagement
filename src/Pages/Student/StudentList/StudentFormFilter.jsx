@@ -9,22 +9,22 @@ export default function StudentFormFilter() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Name */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               NAME
             </label>
             <input
               placeholder="Enter Student Name"
               type="text"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Class */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               CLASS
             </label>
-            <select className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3">
+            <select className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3">
               <option>Select Class</option>
               <option>Class 1</option>
               <option>Class 2</option>
@@ -34,10 +34,10 @@ export default function StudentFormFilter() {
 
           {/* Gender */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               GENDER
             </label>
-            <select className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3">
+            <select className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3">
               <option>Select Gender</option>
               <option>Male</option>
               <option>Female</option>
@@ -47,31 +47,31 @@ export default function StudentFormFilter() {
 
           {/* Email */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               EMAIL ADDRESS
             </label>
             <input
               placeholder="Enter Email Address"
               type="email"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Phone */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               PHONE NUMBER
             </label>
             <input
               placeholder="Enter Phone Number"
               type="tel"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
           <div className="flex justify-start mt-6">
             <button
               type="submit"
-              className="bg-[#0b1d6e] text-white text-sm font-semibold px-8 py-1.5 rounded-md hover:bg-[#1e2e89] transition"
+              className="bg-[#0b1d6e] cursor-pointer text-white px-6 py-2 text-sm rounded hover:bg-[#1e2e89] w-full sm:w-auto"
             >
               SUBMIT
             </button>

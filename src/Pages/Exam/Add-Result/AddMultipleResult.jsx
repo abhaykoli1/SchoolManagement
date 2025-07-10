@@ -83,11 +83,12 @@ export default function AddMultipleResult() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Class & Section */}
           <div>
-            <label>CLASS & SECTION</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">CLASS & SECTION</label>
             <select
               name="classSection"
               value={formData.classSection}
               onChange={handleChange}
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Class</option>
               <option value="10th">10th</option>
@@ -98,11 +99,12 @@ export default function AddMultipleResult() {
 
           {/* Subject */}
           <div>
-            <label>SUBJECT</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">SUBJECT</label>
             <select
               name="subject"
               value={formData.subject}
               onChange={handleChange}
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Subject</option>
               <option value="Math">Math</option>
@@ -113,23 +115,25 @@ export default function AddMultipleResult() {
 
           {/* Exam Name */}
           <div>
-            <label>EXAM NAME</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">EXAM NAME</label>
             <input
               type="text"
               name="examName"
               value={formData.examName}
               onChange={handleChange}
               placeholder="Annual Exam"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Result Type */}
           <div>
-            <label>RESULT TYPE</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">RESULT TYPE</label>
             <select
               name="resultType"
               value={formData.resultType}
               onChange={handleChange}
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Status</option>
               <option value="Pass">Pass</option>
@@ -139,24 +143,25 @@ export default function AddMultipleResult() {
 
           {/* Publish Date */}
           <div>
-            <label>PUBLISH DATE</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">PUBLISH DATE</label>
             <input
               type="date"
               name="publishDate"
               value={formData.publishDate}
               onChange={handleChange}
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Upload Report Card (PDF) */}
           <div>
-            <label>UPLOAD REPORT CARD (PDF)</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">UPLOAD REPORT CARD (PDF)</label>
             <div className="relative w-full">
               <input
                 type="file"
                 name="file"
                 onChange={handleChange}
-                className="w-full bg-white border border-gray-300 p-1 rounded-md pr-32 focus:outline-none ps-3"
+                className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               />
               <button
                 type="button"

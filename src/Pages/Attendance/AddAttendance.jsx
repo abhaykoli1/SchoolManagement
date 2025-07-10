@@ -6,10 +6,10 @@ export default function AddAttendance() {
     name: "",
     class: "",
     gender: "",
-    section:"",
-    phone:"",
-    date:"",
-    attendance:"",
+    section: "",
+    phone: "",
+    date: "",
+    attendance: "",
   });
 
   const handleChange = (e) => {
@@ -24,13 +24,13 @@ export default function AddAttendance() {
 
   const handleReset = () => {
     setFormData({
-    name: "",
-    class: "",
-    gender: "",
-    section:"",
-    phone:"",
-    date:"",
-    attendance:"",
+      name: "",
+      class: "",
+      gender: "",
+      section: "",
+      phone: "",
+      date: "",
+      attendance: "",
     });
   };
 
@@ -38,14 +38,16 @@ export default function AddAttendance() {
     <div className="bg-white p-4 rounded-lg shadow-md w-full">
       {/* Header with Title and Toggle */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-4">
-        <h2 className="text-md font-medium">Add Attendance</h2>
+        <h2 className="text-[17px] font-semibold uppercase mb-6">
+          Add Attendance
+        </h2>
       </div>
 
       <form className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Student Name */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               STUDENT NAME
             </label>
             <input
@@ -53,21 +55,21 @@ export default function AddAttendance() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               placeholder="Enter Designation"
             />
           </div>
 
           {/* Class */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               CLASS
             </label>
             <select
               name="class"
               value={formData.class}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Class</option>
               <option value="10th">10th</option>
@@ -78,14 +80,14 @@ export default function AddAttendance() {
 
           {/* Gender */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               GENDER
             </label>
             <select
               name="gender"
               value={formData.gender}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select gender</option>
               <option value="Male">Male</option>
@@ -96,14 +98,14 @@ export default function AddAttendance() {
 
           {/*Section */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               SECTION
             </label>
             <select
               name="section"
               value={formData.section}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Section</option>
               <option value="A">A</option>
@@ -115,7 +117,7 @@ export default function AddAttendance() {
 
           {/* Phone */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               PHONE NUMBER
             </label>
             <input
@@ -123,13 +125,13 @@ export default function AddAttendance() {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Date */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               DATE
             </label>
             <input
@@ -137,57 +139,55 @@ export default function AddAttendance() {
               name="date"
               value={formData.date}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
-{/* Attendance Status */}
-<div>
-  <label className="block text-xs font-semibold text-gray-700 mb-2">
-    ATTENDANCE STATUS
-  </label>
-  <div className="flex gap-4 text-xs">
-    {/* Present */}
-    <label className="flex items-center gap-2 cursor-pointer">
-      <input
-        type="radio"
-        name="attendance"
-        value="PRESENT"
-        checked={formData.attendance === "PRESENT"}
-        onChange={handleChange}
-        className="accent-green-600"
-      />
-      Present
-    </label>
+          {/* Attendance Status */}
+          <div>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
+              ATTENDANCE STATUS
+            </label>
+            <div className="flex gap-4 text-xs">
+              {/* Present */}
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="attendance"
+                  value="PRESENT"
+                  checked={formData.attendance === "PRESENT"}
+                  onChange={handleChange}
+                  className="accent-green-600"
+                />
+                Present
+              </label>
 
-    {/* Absent */}
-    <label className="flex items-center gap-2 cursor-pointer">
-      <input
-        type="radio"
-        name="attendance"
-        value="ABSENT"
-        checked={formData.attendance === "ABSENT"}
-        onChange={handleChange}
-        className="accent-red-600"
-      />
-      Absent
-    </label>
+              {/* Absent */}
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="attendance"
+                  value="ABSENT"
+                  checked={formData.attendance === "ABSENT"}
+                  onChange={handleChange}
+                  className="accent-red-600"
+                />
+                Absent
+              </label>
 
-    {/* Leave */}
-    <label className="flex items-center gap-2 cursor-pointer text-md">
-      <input
-        type="radio"
-        name="attendance"
-        value="LEAVE"
-        checked={formData.attendance === "LEAVE"}
-        onChange={handleChange}
-        className="accent-yellow-500"
-      />
-      Leave
-    </label>
-  </div>
-</div>
-
-
+              {/* Leave */}
+              <label className="flex items-center gap-2 cursor-pointer text-md">
+                <input
+                  type="radio"
+                  name="attendance"
+                  value="LEAVE"
+                  checked={formData.attendance === "LEAVE"}
+                  onChange={handleChange}
+                  className="accent-yellow-500"
+                />
+                Leave
+              </label>
+            </div>
+          </div>
         </div>
 
         {/* Buttons */}
@@ -195,13 +195,13 @@ export default function AddAttendance() {
           <button
             type="button"
             onClick={handleReset}
-            className="border border-[#0b1d6e] cursor-pointer text-[#0b1d6e] px-6 py-2 text-sm rounded-3xl w-full sm:w-auto"
+            className="bg-[#0b1d6e] cursor-pointer text-white px-6 py-2 text-sm rounded hover:bg-[#1e2e89] w-full sm:w-auto"
           >
             Reset Form
           </button>
           <button
             type="submit"
-            className="bg-[#0b1d6e] cursor-pointer text-white px-6 py-2 text-sm rounded-3xl hover:bg-[#1e2e89] w-full sm:w-auto"
+            className="bg-[#0b1d6e] cursor-pointer text-white px-6 py-2 text-sm rounded hover:bg-[#1e2e89] w-full sm:w-auto"
             onClick={handleSubmit}
           >
             Submit

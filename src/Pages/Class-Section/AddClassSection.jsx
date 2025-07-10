@@ -39,14 +39,14 @@ export default function AddClassSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Class & Section */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               CLASS
             </label>
             <select
               name="class"
               value={formData.class}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Class</option>
               <option value="10th">10th</option>
@@ -57,14 +57,14 @@ export default function AddClassSection() {
 
           {/* Subject */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               SECTION
             </label>
             <select
               name="section"
               value={formData.section}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Section</option>
               <option value="A">A</option>
@@ -76,7 +76,7 @@ export default function AddClassSection() {
 
           {/* Publish Date */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               PUBLISH DATE
             </label>
             <input
@@ -84,13 +84,13 @@ export default function AddClassSection() {
               name="publishDate"
               value={formData.publishDate}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Result File */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
               RESULT FILE
             </label>
             <div className="relative w-full">

@@ -51,7 +51,7 @@ export default function AddSingleResult() {
     <div className="bg-white p-6 rounded-lg shadow-md w-full">
       {/* Header with Title and Toggle */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
-        <h2 className="text-[17px] font-semibold uppercase ">Front Result</h2>
+        <h2 className="text-[17px] font-semibold uppercase mb-6 ">Front Result</h2>
         {/* Toggle Section */}
         <div className="flex flex-col md:flex-row md:gap-4 gap-2 text-xs items-start md:items-center">
           {/* Single Student Result */}
@@ -92,38 +92,38 @@ export default function AddSingleResult() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Student Name */}
           <div>
-            <label>STUDENT NAME</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">STUDENT NAME</label>
             <input
               type="text"
               name="studentName"
               value={formData.studentName}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               placeholder="Enter Student Name"
             />
           </div>
 
           {/* Roll No. */}
           <div>
-            <label>ROLL NUMBER / ID</label>
+             <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">ROLL NUMBER / ID</label>
             <input
               type="text"
               name="rollno"
               value={formData.rollno}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
               placeholder="Enter Roll Number"
             />
           </div>
 
           {/* Class & Section */}
           <div>
-            <label>CLASS & SECTION</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">CLASS & SECTION</label>
             <select
               name="classSection"
               value={formData.classSection}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Class</option>
               <option value="10th">10th</option>
@@ -134,12 +134,12 @@ export default function AddSingleResult() {
 
           {/* Subject */}
           <div>
-            <label>SUBJECT</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">SUBJECT</label>
             <select
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Subject</option>
               <option value="Math">Math</option>
@@ -150,37 +150,37 @@ export default function AddSingleResult() {
 
           {/* Total Marks */}
           <div>
-            <label>TOTAL MARKS</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">TOTAL MARKS</label>
             <input
               type="number"
               name="totalMarks"
               value={formData.totalMarks}
               onChange={handleChange}
               placeholder="Enter Total Marks"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Obtained Marks */}
           <div>
-            <label>OBTAIN MARKS</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">OBTAIN MARKS</label>
             <input
               type="number"
               name="obtainMarks"
               value={formData.obtainMarks}
               onChange={handleChange}
               placeholder="Enter Obtained Marks"
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
           {/* Passing Marks */}
           <div>
-            <label>GRADE</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">GRADE</label>
             <select
               name="grade"
               value={formData.grade}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Grade</option>
               <option value="A+">A+</option>
@@ -192,12 +192,12 @@ export default function AddSingleResult() {
 
           {/* Result Status */}
           <div>
-            <label>RESULT STATUS</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">RESULT STATUS</label>
             <select
               name="status"
               value={formData.status}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             >
               <option value="">Select Status</option>
               <option value="Pass">Pass</option>
@@ -207,20 +207,20 @@ export default function AddSingleResult() {
 
           {/* Publish Date */}
           <div>
-            <label>PUBLISH DATE</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">PUBLISH DATE</label>
             <input
               type="date"
               name="publishDate"
               value={formData.publishDate}
               onChange={handleChange}
-              className="w-full bg-white border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
+              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
             />
           </div>
 
           {/* Upload Report Card (PDF) */}
 
           <div>
-            <label>UPLOAD REPORT CARD (PDF)</label>
+            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">UPLOAD REPORT CARD (PDF)</label>
             <div className="relative w-full">
               <input
                 type="file"
@@ -239,13 +239,14 @@ export default function AddSingleResult() {
         </div>
         {/* Description */}
         <div>
-          <label>DESCRIPTION</label>
+          <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">DESCRIPTION</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
             rows={4}
             placeholder="Description"
+            className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
           ></textarea>
         </div>
         {/* Buttons */}

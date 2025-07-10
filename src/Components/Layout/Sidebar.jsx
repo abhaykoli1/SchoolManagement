@@ -209,7 +209,7 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
               "/hostel-management"
             )}
             {navItem(
-              "Inventory Managementlist",
+              "Inventory Management",
               <MdOutlineLibraryBooks />,
               null,
               "",
