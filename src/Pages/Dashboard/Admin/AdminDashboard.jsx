@@ -32,7 +32,7 @@ export default function AdminDashboard() {
   ];
   return (
     <>
-      <div className="bg-gray-50 min-h-screen p-2">
+      <div className="bg-gray50 min-h-screen p-2">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-lg sm:text-xl font-semibold">Welcome Admin!</h1>
           <p className="text-sm sm:text-base">
@@ -54,11 +54,10 @@ export default function AdminDashboard() {
             </div>
           ))}
         </div>
-      <DashboardCharts />
-      <StudentDashboard/>
-      <DefaulterTable/>
+        <DashboardCharts />
+        <StudentDashboard />
+        <DefaulterTable />
       </div>
-
     </>
   );
 }

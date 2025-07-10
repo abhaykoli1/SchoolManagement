@@ -17,6 +17,7 @@ import { GoScreenFull } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { useFullscreen } from "../../common/useFullscreen";
 import { logout } from "../../utils/logout";
+import { COLORS } from "../../common/theme";
 
 const Header = ({ toggleSidebar, isSidebarOpen }) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -25,20 +26,15 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
 
   return (
     <>
-      <header className="flex items-center justify-between px-4 py-2 bg-white shadow sticky top-0 z-30">
+      <header className="flex fixed top-0 items-center justify-between pr-4 pl-1 py-2 bg-white z-20 h-[55px]  left-[76px] right-0 ">
         <div className="flex items-center gap-2">
-          <h1 className="text-[#3D5EE1] font-bold text-lg">
-            {isSidebarOpen ? "" : "EDU"}
-          </h1>
+          {/* <Link to="/">
+            <h1 className={`text-${COLORS.primary} font-bold text-lg`}>
+              {isSidebarOpen ? "EDU" : "EDU"}
+            </h1>
+          </Link> */}
 
-          <button
-            onClick={toggleSidebar}
-            className="bg-[#3D5EE1] text-white p-2 rounded-md"
-          >
-            <FaBars />
-          </button>
-
-          <div className="hidden sm:block relative ml-2">
+          <div className="hidden sm:block relative">
             <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
               <FaSearch />
             </span>
@@ -46,7 +42,8 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
               type="text"
               placeholder="Search here"
               // className="search-input"
-              className="!pl-9 !pr-3 !py-1.5 !rounded !border !border-gray-200 !bg-neutral-100 !text-sm !outline-none !w-48 sm:!w-64"
+
+              className={`${COLORS.border} !pl-9 !pr-3 !py-2 !rounded  ${COLORS.primary_light} !bg- neutral-100 !text-sm !outline-none !w-48 sm:!w-64`}
             />
           </div>
 
@@ -63,19 +60,21 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
             <img
               src="https://flagcdn.com/us.svg"
               alt="Language"
-              className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-neutral-100 cursor-pointer"
+              className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full ${COLORS.primary_light}  cursor-pointer`}
             />
-            <FaBell className="w-6 h-6 sm:w-8 sm:h-8 text-gray-600 rounded-full bg-neutral-100 cursor-pointer p-1.5 sm:p-2" />
+            <FaBell
+              className={`w-6 h-6 sm:w-8 sm:h-8 text-gray-600 rounded-full ${COLORS.primary_light} cursor-pointer p-1.5 sm:p-2`}
+            />
 
             {isFullScreen ? (
               <FaCompress
                 onClick={toggleFullScreen}
-                className="w-6 h-6 sm:w-8 sm:h-8 text-gray-600 rounded-full bg-neutral-100 cursor-pointer p-1.5 sm:p-2"
+                className={`w-6 h-6 sm:w-8 sm:h-8 text-gray-600 rounded-full ${COLORS.primary_light}  cursor-pointer p-1.5 sm:p-2`}
               />
             ) : (
               <GoScreenFull
                 onClick={toggleFullScreen}
-                className="w-6 h-6 sm:w-8 sm:h-8 text-gray-600 rounded-full bg-neutral-100 cursor-pointer p-1.5 sm:p-2"
+                className={`w-6 h-6 sm:w-8 sm:h-8 text-gray-600 rounded-full ${COLORS.primary_light}   cursor-pointer p-1.5 sm:p-2`}
               />
             )}
           </div>

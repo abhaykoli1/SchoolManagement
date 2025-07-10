@@ -77,8 +77,6 @@ export default function AddStudentForm() {
     fetchSections();
   }, [formData.class_id]);
 
-
-  
   const handleChange = (e) => {
     const { name, value, files, type } = e.target;
     setFormData((prev) => ({
@@ -87,8 +85,6 @@ export default function AddStudentForm() {
     }));
   };
 
-
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -111,29 +107,7 @@ export default function AddStudentForm() {
         return;
       }
     }
-  if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      showErrorToast("Invalid student email format.");
-      return;
-    }
 
-    // Guardian email validation (if entered)
-    if (
-      formData.guardian_email &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.guardian_email)
-    ) {
-      showErrorToast("Invalid guardian email format.");
-      return;
-    }
-
-    // Phone number validation
-    if (formData.phone && !/^\d{10}$/.test(formData.phone)) {
-      showErrorToast("Phone must be exactly 10 digits.");
-      return;
-    }
-    if (!/^\d{10}$/.test(formData.guardian_phone)) {
-      showErrorToast("Guardian phone must be exactly 10 digits.");
-      return;
-    }
     setLoading(true);
     const data = new FormData();
     for (const key in formData) {

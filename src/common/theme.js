@@ -1,5 +1,9 @@
 export const COLORS = {
-  primary: "primary",
+  primary: "purple-600",
+  primary_light: "bg-purple-50/85",
+  // bg-neutral-100
+  border: "!border !border-purple-100 !rounded-[15px]",
+
   secondary: "secondary",
   accent: "accent",
   neutral: "neutral",

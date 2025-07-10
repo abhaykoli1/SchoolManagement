@@ -3,8 +3,8 @@ import { showSuccessToast } from "./toastUtils";
 export const logout = () => {
   // Clear storage
   localStorage.removeItem("authToken");
-  localStorage.removeItem("userId");
-  localStorage.removeItem("userType");
+  localStorage.removeItem("schoolId");
+  localStorage.removeItem("schoolType");
   sessionStorage.clear();
 
   // Show toast (optional)
