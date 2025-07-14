@@ -1,6 +1,14 @@
 export const COLORS = {
-  primary: "purple-600",
-  primary_light: "bg-purple-50/85",
+  // primary: "bg-purple-600/90",
+  primary: "bg-purple-600/90",
+  // primary_text: "text-purple-600/90",
+  primary_text: "text-blue-900/90",
+  // hover_primary_text: "hover:text-purple-700",
+  hover_primary_text: "hover:text-blue-900",
+  // primaryText: "var(--primary-text)",
+
+  primary_light_bg: "bg-blue-50",
+
   // bg-neutral-100
   border: "!border !border-purple-100 !rounded-[15px]",
 

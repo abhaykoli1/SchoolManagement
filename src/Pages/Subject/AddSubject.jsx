@@ -1,81 +1,214 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { addSubject } from "../../AppStore/Slices/subjectSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getClasses } from "../../AppStore/Slices/classSectionSlice";
 
 export default function AddSubject() {
+  const dispatch = useDispatch();
+  const schoolId = localStorage.getItem("schoolId");
+  const { classes } = useSelector((state) => state.classSection);
+
+  useEffect(() => {
+    if (schoolId) {
+      dispatch(getClasses(schoolId));
+    }
+  }, [dispatch, schoolId]);
+
   const [formData, setFormData] = useState({
-    class: "",
-    subject: "",
-    section: "",
+    school_id: localStorage.getItem("schoolId"),
+    class_id: "",
+    section_id: "",
+    subject_name: "",
+    subject_code: "",
+    assigned_teachers: [],
+    syllabus: "",
   });
+
+  console.log("formData", formData);
+
+  const [teacherInput, setTeacherInput] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submitted Data:", formData);
+  const handleAddTeacher = () => {
+    if (teacherInput.trim()) {
+      setFormData((prev) => ({
+        ...prev,
+        assigned_teachers: [...prev.assigned_teachers, teacherInput.trim()],
+      }));
+      setTeacherInput("");
+    }
+  };
+
+  const handleRemoveTeacher = (index) => {
+    const updated = [...formData.assigned_teachers];
+    updated.splice(index, 1);
+    setFormData((prev) => ({
+      ...prev,
+      assigned_teachers: updated,
+    }));
   };
 
   const handleReset = () => {
     setFormData({
-      class: "",
-      subject: "",
-      section: "",
+      school_id: localStorage.getItem("schoolId"),
+
+      class_id: "",
+      section_id: "",
+      subject_name: "",
+      subject_code: "",
+      assigned_teachers: [],
+      syllabus: "",
+    });
+    setTeacherInput("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addSubject(formData)).then(() => {
+      setFormData({
+        school_id: localStorage.getItem("schoolId"),
+        class_id: "",
+        section_id: "",
+        subject_name: "",
+        subject_code: "",
+        assigned_teachers: [],
+        syllabus: "",
+      });
+      setTeacherInput("");
     });
   };
 
+  useEffect(() => {
+    if (classes.length > 0 && !formData.class_id) {
+      setFormData((prev) => ({ ...prev, class_id: classes[0]._id }));
+    }
+  }, [classes]);
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-md w-full">
-      {/* Header with Title and Toggle */}
       <h2 className="text-[17px] font-semibold uppercase mb-6">Add Subject</h2>
 
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Class */}
+          {/* Class ID */}
+
           <div>
-            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
-              CLASS
-            </label>
+            <label className="label">Class</label>
+            <select
+              name="class_id"
+              value={formData.class_id}
+              onChange={handleChange}
+              className="input"
+              required
+            >
+              {classes.length === 0 ? (
+                <option value="">Loading classes...</option>
+              ) : (
+                classes.map((cls) => (
+                  <option key={cls._id} value={cls._id}>
+                    {cls.class_name}
+                  </option>
+                ))
+              )}
+            </select>
+          </div>
+
+          {/* Section ID (Optional) */}
+          <div>
+            <label className="label">Section ID (optional)</label>
             <input
               type="text"
-              name="class"
-              value={formData.class}
+              name="section_id"
+              value={formData.section_id}
               onChange={handleChange}
-              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
-              placeholder="Enter Designation"
+              className="input"
+              placeholder="Enter Section ID"
             />
           </div>
 
-          {/* Subject */}
+          {/* Subject Name */}
           <div>
-            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
-              SUBJECT
-            </label>
+            <label className="label">Subject Name</label>
             <input
               type="text"
-              name="subject"
-              value={formData.subject}
+              name="subject_name"
+              value={formData.subject_name}
               onChange={handleChange}
-              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
-              placeholder="Enter Designation"
+              className="input"
+              placeholder="Enter Subject Name"
+              required
             />
           </div>
 
-          {/* Section */}
+          {/* Subject Code */}
           <div>
-            <label className="uppercase block font-[500] text-[14px] text-[#666666] mb-2">
-              SECTION
-            </label>
+            <label className="label">Subject Code</label>
             <input
               type="text"
-              name="section"
-              value={formData.section}
+              name="subject_code"
+              value={formData.subject_code}
               onChange={handleChange}
-              className="w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3"
-              placeholder="Enter Designation"
+              className="input"
+              placeholder="Enter Subject Code"
             />
+          </div>
+
+          {/* Assigned Teachers */}
+          <div>
+            <label className="label">Assigned Teachers</label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={teacherInput}
+                onChange={(e) => setTeacherInput(e.target.value)}
+                className="input w-full"
+                placeholder="Enter Teacher ID"
+              />
+              <button
+                type="button"
+                className="px-3 py-1 bg-blue-600 text-white rounded"
+                onClick={handleAddTeacher}
+              >
+                Add
+              </button>
+            </div>
+            <ul className="mt-2 space-y-1 text-sm">
+              {formData.assigned_teachers.map((teacher, idx) => (
+                <li
+                  key={idx}
+                  className="flex items-center justify-between bg-gray-100 px-2 py-1 rounded"
+                >
+                  {teacher}
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveTeacher(idx)}
+                    className="text-red-600 ml-4"
+                  >
+                    ×
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Syllabus */}
+          <div className="md:col-span-2">
+            <label className="label">Syllabus</label>
+            <textarea
+              name="syllabus"
+              value={formData.syllabus}
+              onChange={handleChange}
+              rows={4}
+              className="input"
+              placeholder="Enter Syllabus Details"
+            ></textarea>
           </div>
         </div>
 
@@ -91,12 +224,20 @@ export default function AddSubject() {
           <button
             type="submit"
             className="bg-[#0b1d6e] cursor-pointer text-white px-6 py-2 text-sm rounded hover:bg-[#1e2e89] w-full sm:w-auto"
-            onClick={handleSubmit}
           >
-            Add Course
+            Add Subject
           </button>
         </div>
       </form>
     </div>
   );
 }
+
+// Tailwind short class
+const labelClass = "uppercase block font-[500] text-[14px] text-[#666666] mb-2";
+const inputClass =
+  "w-full bg-white font-[500] text-[14px] border border-gray-300 p-1 rounded-md focus:outline-none ps-3";
+
+// Optional for reuse
+AddSubject.label = labelClass;
+AddSubject.input = inputClass;

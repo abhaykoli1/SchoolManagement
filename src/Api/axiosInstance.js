@@ -2,7 +2,8 @@
 import axios from "axios";
 import { showErrorToast } from "../utils/toastUtils";
 
-const BASE_URL = "https://smsbackend-d2hd.onrender.com";
+// const BASE_URL = "https://smsbackend-d2hd.onrender.com/api";
+const BASE_URL = "http://0.0.0.0:8080/api";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,

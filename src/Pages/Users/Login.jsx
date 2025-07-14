@@ -4,16 +4,23 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "../../Api/axiosInstance";
 import { showSuccessToast, showErrorToast } from "../../utils/toastUtils";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // install react-icons if not already
 
-export default function LoginForm() {
+export default function Login() {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    scope: "",
     client_id: "",
     client_secret: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => setShowPassword((prev) => !prev);
+
+  console.log(formData);
+
+  const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [credentialsLoading, setCredentialsLoading] = useState(true);
 
@@ -26,7 +33,7 @@ export default function LoginForm() {
         const params = new URLSearchParams();
         params.append("ip", ip);
 
-        const res = await axiosInstance.post("/api/auth/client-init", params, {
+        const res = await axiosInstance.post("/auth/client-init", params, {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
         });
 
@@ -67,11 +74,13 @@ export default function LoginForm() {
       params.append("client_id", formData.client_id);
       params.append("client_secret", formData.client_secret);
 
-      const res = await axiosInstance.post("/api/auth/login", params, {
+      const res = await axiosInstance.post("/auth/login", params, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
       });
+
+      console.log("res", res);
 
       const { access_token, type, id, message } = res.data;
 
@@ -98,24 +107,19 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBFBFB] flex flex-col md:flex-row">
-      <ToastContainer />
-
-      {/* Left image */}
-      <div className="hidden md:flex md:w-1/2 items-center justify-center bg-white p-6">
-        <img
-          src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg"
-          alt="Login"
-          className="w-full max-w-xs md:max-w-md"
-        />
-      </div>
-
-      {/* Right form */}
-      <div className="md:w-1/2 w-full p-6 flex items-center justify-center">
-        <div className="w-[90%] mx-auto max-w-xl">
-          <h2 className="text-2xl text-center font-semibold mb-6 text-[#1F2A44]">
-            Login Form
+    <div className="h-full  flex flex-col md:flex-row">
+      <div className=" w-full p-6 flex items-center justify-center">
+        <div className="w-full ">
+          <h2 className="text-3xl font-bold text-cente text-gray-900">
+            Log In
           </h2>
+
+          <p className="text-sm text-cente text-gray-600 mt-2  mb-4">
+            Create a new account ?{" "}
+            <a href="/signup" className="underline">
+              Sign up
+            </a>
+          </p>
 
           {/* Credentials status indicator */}
           <div className="mb-4 flex justify-end">
@@ -136,46 +140,34 @@ export default function LoginForm() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Username */}
             <div>
-              <label className="block mb-1 text-sm font-medium">
-                Username *
-              </label>
+              <label>Username *</label>
               <input
                 type="text"
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
               />
             </div>
 
-            {/* Password */}
-            <div>
-              <label className="block mb-1 text-sm font-medium">
-                Password *
-              </label>
+            <div className="relative">
+              <label className="block mb-1">Password *</label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+                className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
               />
-            </div>
-
-            {/* Scope (optional) */}
-            <div>
-              <label className="block mb-1 text-sm font-medium">Scope</label>
-              <input
-                type="text"
-                name="scope"
-                value={formData.scope}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
-              />
+              <button
+                type="button"
+                onClick={togglePassword}
+                className="absolute top-6 right-0 !text-[#494949]"
+              >
+                {showPassword ? <FaEyeSlash size={21} /> : <FaEye size={21} />}
+              </button>
             </div>
 
             {/* Hidden Inputs for Client ID & Secret */}
@@ -186,21 +178,45 @@ export default function LoginForm() {
               value={formData.client_secret}
             />
 
+            <div className="space-y-4 mt-4">
+              <div className="!flex !items-center space-x-3 cursor-pointer">
+                <div>
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={() => setAgreed(!agreed)}
+                    required
+                    className="!w-5 !h-5 accent-black mt-1"
+                  />
+                </div>
+                <span className="!text-[13px] text-gray-700 font-medium">
+                  Agree to our{" "}
+                  <a href="#" className="underline">
+                    Terms of use
+                  </a>{" "}
+                  and{" "}
+                  <a href="#" className="underline">
+                    Privacy Policy
+                  </a>
+                </span>
+              </div>
+            </div>
+
             {/* Submit Button */}
             <div>
               <button
                 type="submit"
-                disabled={loading || credentialsLoading}
-                className={`w-full text-white py-2 rounded-md flex items-center justify-center gap-2 transition ${
-                  loading || credentialsLoading
-                    ? "bg-gray-500 cursor-not-allowed"
-                    : "bg-[#9B594F] hover:bg-[#874d45]"
-                }`}
+                disabled={!agreed || loading || credentialsLoading}
+                className={`w-full mt-4 ${
+                  agreed || loading || credentialsLoading
+                    ? "bg-gray-900 hover:bg-black cursor-pointer"
+                    : "bg-gray-300 cursor-not-allowed"
+                } text-white font-semibold py-3 rounded-full transition-all`}
               >
                 {loading ? (
                   <>
                     <FaCircleNotch className="animate-spin h-4 w-4" />
-                    Logging in...
+                    Saving...
                   </>
                 ) : (
                   "Login"

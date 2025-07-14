@@ -1,8 +1,14 @@
+h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-text);
+}
+
 label {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: #374151;
+  color: #374151d5;
   margin-bottom: 0.4rem;
   text-transform: uppercase;
 }
@@ -11,9 +17,22 @@ input,
 select {
   font-size: 0.9rem !important;
   padding: 8px !important;
-  border: 1px solid #ccc !important;
-  border-radius: 4px !important;
+  border: 1px solid #d1d5db !important;
+  /* border-radius: 4px ; */
+  border-radius: 0.375rem !important;
   width: 100% !important;
+  outline: none;
+  /* padding: 0.75rem 1rem;    py-3 = 0.75rem, px-4 = 1rem */
+}
+
+select {
+  padding: 9.2px !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 1.5px #111827a2;
 }
 
 input::placeholder {
@@ -31,8 +50,8 @@ textarea::placeholder {
 textarea {
   font-size: 0.9rem !important;
   padding: 8px !important;
-  border: 1px solid #ccc !important;
-  border-radius: 4px !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 0.375rem !important;
   width: 100% !important;
   resize: vertical;
   box-sizing: border-box;

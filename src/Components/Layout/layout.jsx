@@ -36,7 +36,7 @@ const Layout = () => {
 
   return (
     <div className="flex  relative overflow-hidden ">
-      <div className="bg-purple-300 h-screen w-10"></div>
+      {/* <div className="bg-purple-300 h-screen w-10"></div> */}
       <Sidebar
         toggleSidebar={toggleSidebar}
         isSidebarOpen={isSidebarOpen}
@@ -45,20 +45,29 @@ const Layout = () => {
       />{" "}
       <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
       {/* Main content */}
-      <div className="flex bg-purple-200 right-0 rounded-tl-2xl fixed top-[55px] bottom-0 left-20">
-        <div className=" h-full w-52 px-4 flex flex-col justify-betwee top-[65px] fixed !z-0">
+      <div
+        className={`${COLORS.primary_light_b} flex  right-0 rounded-tl-2xl fixed top-[55px] bottom-0 left-20`}
+      >
+        <div
+          className={`h-full transition-colors duration-500  ${
+            isSidebarOpen
+              ? "bg-gradient-to-r from-blue-50 to-white "
+              : "bg-white"
+          } rounded-2xl w-52 px-4 flex flex-col justify-betwee top-[65px] fixed !z-0`}
+        >
           <SidebarExtraLinks
             subMenuItems={subMenuItems}
             setIsSidebarOpen={setIsSidebarOpen}
           />
-          {/* <button className="flex  bottom-0 items-center w-full gap-2 text-sm !text-red-600 hover:text-red-800 bg-white px-4 py-2 !rounded-lg shadow hover:shadow-md transition">
-            <FiLogOut className="text-lg" />
-            Logout
-          </button> */}
         </div>
 
         <div
-          className={`transition-all shadow-2xl duration-500 mt-2 !z-10 [60px] overflow-hidden  bg-gradient-to-r from-[#d3f1ff] to-[#e0d2fa] rounded-tl-2xl  ease-in-out w-full ${
+          style={
+            {
+              // boxShadow: "-5px -1px 10px rgba(0, 0, 0, 0.1)",
+            }
+          }
+          className={`transition-all  shadow-2xl duration-500 mt-2 !z-10 [60px] overflow-hidden  bg-gradient-to-r from-[#daf3ff] to-[#e0d2fa] rounded-tl-2xl  ease-in-out w-full ${
             isSidebarOpen ? "ml-52" : "ml-2  [90px]"
           }`}
         >

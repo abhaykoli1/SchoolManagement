@@ -26,7 +26,9 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
 
   return (
     <>
-      <header className="flex fixed top-0 items-center justify-between pr-4 pl-1 py-2 bg-white z-20 h-[55px]  left-[76px] right-0 ">
+      <header
+        className={`flex fixed top-0 items-center justify-between pr-4 pl-1 py-2 bg-white  z-20 h-[55px]  left-[76px] right-0 `}
+      >
         <div className="flex items-center gap-2">
           {/* <Link to="/">
             <h1 className={`text-${COLORS.primary} font-bold text-lg`}>

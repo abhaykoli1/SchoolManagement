@@ -13,10 +13,12 @@ export const registerSchool = async (formData) => {
       }
     }
 
-    const response = await axiosInstance.post("/api/school/register-school", payload);
+    const response = await axiosInstance.post(
+      "/api/school/register-school",
+      payload
+    );
     showSuccessToast("School registered successfully!");
     return response.data;
-
   } catch (error) {
     console.error("Registration API Error:", error);
     const detail = error?.response?.data?.detail;

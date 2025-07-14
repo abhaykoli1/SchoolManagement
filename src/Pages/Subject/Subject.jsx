@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import TableHeader from "../../Components/TableHeader";
 import AddSubject from "./AddSubject";
+import { useDispatch, useSelector } from "react-redux";
+import { getClasses } from "../../AppStore/Slices/classSectionSlice";
+import { getSubjectsByClass } from "../../AppStore/Slices/subjectSlice";
 
 export default function ClassSection() {
   return (
@@ -13,47 +16,72 @@ export default function ClassSection() {
 }
 
 function SubjectList() {
+  const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const [selectedId, setSelectedId] = useState(null);
+  const [selectedClassId, setSelectedClassId] = useState("");
 
-  const examData = [
-    {
-      id: 1,
-      title: "Robert Jackson",
-      category: "Teacher",
-      overview: "Title name whichever should be",
-    },
-    {
-      id: 2,
-      title: "Michal Robert",
-      category: "Student",
-      overview: "Title name whichever should be",
-    },
-  ];
+  console.log("selectedId", selectedId);
+  console.log("selectedClassId", selectedClassId);
 
-  const filteredData = examData.filter((item) =>
-    item.title.toLowerCase().includes(search.toLowerCase())
+  const { classes } = useSelector((state) => state.classSection);
+  const { subjects, loading } = useSelector((state) => state.subject);
+
+  useEffect(() => {
+    dispatch(getClasses(localStorage.getItem("schoolId")));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (selectedClassId) {
+      dispatch(getSubjectsByClass(selectedClassId));
+    }
+  }, [dispatch, selectedClassId]);
+
+  // console.log("subjects", subjects);
+
+  const filteredData = subjects?.filter((item) =>
+    item.subject_name?.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md mt-5">
       {/* Header + Search */}
-      <TableHeader title="Subject" search={search} setSearch={setSearch} />
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+        <TableHeader title="Subject" search={search} setSearch={setSearch} />
+        <select
+          className="border p-2 rounded mt-3 md:mt-0 md:ml-4"
+          onChange={(e) => setSelectedClassId(e.target.value)}
+          value={selectedClassId}
+        >
+          <option value="">Select Class</option>
+          {classes.map((cls) => (
+            <option key={cls._id} value={cls._id}>
+              {cls.class_name}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      {/* Responsive Table */}
+      {/* Table */}
       <div className="overflow-x-auto">
         <table className="custom-table mt-3">
           <thead className="custom-thead">
             <tr className="custom-thead-row">
               <th>S NO.</th>
-              <th>TITLE</th>
-              <th>CATEGORY</th>
-              <th>OVERVIEW</th>
+              <th>SUBJECT NAME</th>
+              <th>CODE</th>
+              <th>SECTION</th>
               <th className="action-label">ACTIONS</th>
             </tr>
           </thead>
           <tbody className="custom-tbody">
-            {filteredData.length > 0 ? (
+            {loading ? (
+              <tr>
+                <td colSpan="5" className="text-center py-4">
+                  Loading subjects...
+                </td>
+              </tr>
+            ) : filteredData?.length > 0 ? (
               filteredData.map((item, index) => (
                 <tr
                   key={item.id}
@@ -67,9 +95,9 @@ function SubjectList() {
                   onClick={() => setSelectedId(item.id)}
                 >
                   <td>{index + 1}</td>
-                  <td>{item.title}</td>
-                  <td>{item.category}</td>
-                  <td>{item.overview}</td>
+                  <td>{item.subject_name}</td>
+                  <td>{item.subject_code || "-"}</td>
+                  <td>{item.section_id || "-"}</td>
                   <td className="action-icons">
                     <span className="edit-icon">✏️</span>
                     <span className="delete-icon">🗑️</span>

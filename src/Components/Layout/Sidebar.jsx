@@ -17,6 +17,7 @@ import { GiNotebook } from "react-icons/gi";
 import { FiMenu } from "react-icons/fi";
 import { RiMenuUnfoldLine } from "react-icons/ri";
 import { RiMenuUnfold2Line } from "react-icons/ri";
+import { COLORS } from "../../common/theme";
 
 const menuItems = [
   {
@@ -121,7 +122,9 @@ export default function Sidebar({
   };
   console.log("toggleSidebar", isSidebarOpen);
   return (
-    <div className="h-screen  fixed left-[1px] top-0 bottom-0 bg-white !rounded-tl-3xl    borde  border-gray-400  w-20 bg-whit -md text-purple-700 flex flex-col items-center justify-between ">
+    <div
+      className={`h-screen fixed left-[1px] top-0 bottom-0 bg-white   w-20 bg-whit -md ${COLORS.primary_text} flex flex-col items-center justify-between`}
+    >
       {/* Menu */}
       <div className="bg-white  flex items-center rounded-tl-3xl justify-center w-full h-16 ml-1 mb-1 pt-2">
         {isSidebarOpen ? (
@@ -145,7 +148,7 @@ export default function Sidebar({
           <div
             key={idx}
             onClick={() => handleClick(item)}
-            className="flex flex-col hover:scale-105 transition-all duration-500 cursor-pointer items-center text-center text-purple-600 hover:text-purple-800"
+            className={`flex flex-col hover:scale-105 transition-all duration-500 cursor-pointer items-center text-center ${COLORS.primary_text} ${COLORS.hover_primary_text}`}
           >
             <div className="text-2xl">{item.icon}</div>
             <span className="text-[10px] mt-1 font-[400] leading-tight">

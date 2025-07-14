@@ -13,4 +13,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Colors */
+
+  --primary-text: rgba(30, 58, 138, 0.9);
+}
+
+.shdowMain {
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3) !important;
 }

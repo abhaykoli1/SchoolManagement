@@ -9,8 +9,9 @@ import PublicRoute from "./routes/PublicRoute";
 
 // Dashboard & Auth
 import AdminDashboard from "./Pages/Dashboard/Admin/AdminDashboard";
-import LoginForm from "./Pages/Users/LoginForm";
-import SignupForm from "./Pages/Users/SignupForm";
+import SchoolRegistration from "./Pages/Users/SchoolRegistration";
+import SchoolAuthPage from "./Pages/Users/SchoolAuthPage";
+import Login from "./Pages/Users/Login";
 
 // Student Pages
 import StudentList from "./Pages/Student/StudentList/StudentList";
@@ -24,7 +25,7 @@ import SingleResultList from "./Pages/Exam/Add-Result/SingleResultList";
 import MultipleResultList from "./Pages/Exam/Add-Result/MultipleResultList";
 
 // Classes & Subject
-import ClassSection from "./Pages/Class-Section/ClassSection";
+import ClassSection from "./Pages/Class-Section/ClassSectionList";
 import Subject from "./Pages/Subject/Subject";
 
 // Other Modules
@@ -44,43 +45,51 @@ function App() {
   return (
     <Routes>
       {/* 🔐 Private Routes */}
-      {/* <Route element={<PrivateRoute />}> */}
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Navigate to="admin-dashboard" />} />
-        <Route path="admin-dashboard" element={<AdminDashboard />} />
-        <Route path="student-list" element={<StudentList />} />
-        <Route path="add-student" element={<AddStudent />} />
-        <Route path="student-attendance" element={<StudentAttendance />} />
-        <Route path="add-expert-teacher" element={<AddExpertTeacher />} />
-        <Route path="exam-result" element={<ExamManagement />} />
-        <Route path="single-result" element={<SingleResultList />} />
-        <Route path="multiple-result" element={<MultipleResultList />} />
-        <Route path="classes" element={<ClassSection />} />
-        <Route path="add-subject" element={<Subject />} />
-        <Route path="events" element={<Event />} />
-        <Route
-          path="attendance-management"
-          element={<AttendanceManagement />}
-        />
-        <Route path="new" element={<New />} />
-        <Route path="home-assignment" element={<Assignment />} />
-        <Route path="bock-library" element={<Library />} />
-        <Route path="transport-management" element={<Transportmanagement />} />
-        <Route path="fees" element={<Feesmanagement />} />
-        <Route path="hostel-management" element={<Hostelmanagement />} />
-        <Route path="inventory-management" element={<Inventorymanagement />} />
-        <Route path="Parent-portal" element={<Parentportal />} />
-        <Route path="Online-Admission" element={<Onlineadmission />} />
-        <Route path="*" element={<NotFound />} />
+      <Route element={<PrivateRoute />}>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="admin-dashboard" />} />
+          <Route path="admin-dashboard" element={<AdminDashboard />} />
+          <Route path="student-list" element={<StudentList />} />
+          <Route path="add-student" element={<AddStudent />} />
+          <Route path="student-attendance" element={<StudentAttendance />} />
+          <Route path="add-expert-teacher" element={<AddExpertTeacher />} />
+          <Route path="exam-result" element={<ExamManagement />} />
+          <Route path="single-result" element={<SingleResultList />} />
+          <Route path="multiple-result" element={<MultipleResultList />} />
+          <Route path="classes" element={<ClassSection />} />
+
+          <Route path="add-subject" element={<Subject />} />
+          <Route path="events" element={<Event />} />
+          <Route
+            path="attendance-management"
+            element={<AttendanceManagement />}
+          />
+          <Route path="new" element={<New />} />
+          <Route path="home-assignment" element={<Assignment />} />
+          <Route path="bock-library" element={<Library />} />
+          <Route
+            path="transport-management"
+            element={<Transportmanagement />}
+          />
+          <Route path="fees" element={<Feesmanagement />} />
+          <Route path="hostel-management" element={<Hostelmanagement />} />
+          <Route
+            path="inventory-management"
+            element={<Inventorymanagement />}
+          />
+          <Route path="Parent-portal" element={<Parentportal />} />
+          <Route path="Online-Admission" element={<Onlineadmission />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Route>
 
-      {/* </Route> */}
-
       {/* 🔓 Public Routes */}
-      {/* <Route element={<PublicRoute />}>
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/signup" element={<SignupForm />} />
-      </Route> */}
+      <Route element={<PublicRoute />}>
+        <Route path="/" element={<SchoolAuthPage />}>
+          <Route path="signup" element={<SchoolRegistration />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+      </Route>
     </Routes>
   );
 }

@@ -7,18 +7,30 @@ import { showSuccessToast, showErrorToast } from "../../utils/toastUtils";
 
 export default function SignupForm() {
   const [formData, setFormData] = useState({
-    school_name: "",
-    email: "",
-    phone: "",
-    principal_name: "",
-    address: "",
-    city: "",
-    state: "",
-    country: "",
-    pincode: "",
-    number_of_students: "",
+    // school_name: "",
+    // email: "",
+    // phone: "",
+    // principal_name: "",
+    // address: "",
+    // city: "",
+    // state: "",
+    // country: "",
+    // pincode: "",
+    // number_of_students: "",
+    school_name: "dbn",
+    email: "dbn3@gmail.com",
+    phone: "123456789",
+    principal_name: "NNC",
+    address: "jaipur",
+    city: "jaipur",
+    state: "rajasthan",
+    country: "+91",
+    pincode: "302003",
+    number_of_students: 200,
     image: null,
   });
+
+  console.log(formData);
 
   const [loading, setLoading] = useState(false);
 
@@ -51,13 +63,14 @@ export default function SignupForm() {
 
     try {
       const response = await axiosInstance.post(
-        "/api/school/register-school",
+        "/school/register-school",
         payload
       );
+
       showSuccessToast(response.data.message);
       console.log("Success:", response.data);
     } catch (error) {
-      console.error("Registration Error:", error);
+      console.log(error);
       const detail = error?.response?.data?.detail || "Something went wrong.";
       showErrorToast(detail);
     } finally {
